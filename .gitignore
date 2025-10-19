@@ -36,3 +36,30 @@ public/
 
 bun.lockb
 .bun/
+
+# Sanity Studio
+/sanity/node_modules
+/sanity/.sanity
+/sanity/dist
+/sanity/.env
+/sanity/.env.local
+/sanity/.env.development.local
+/sanity/.env.test.local
+/sanity/.env.production.local
+
+# Sanity specific lock files (if using bun)
+/sanity/bun.lockb
+/sanity/bun.lock
+
+# Sanity build and cache files
+/sanity/static
+/sanity/*.log
+/sanity/.cache
+
+/sanity/.git
+/sanity/**/.git
+/sanity/.gitignore
+/sanity/.gitattributes
+/sanity/.gitconfig
+/sanity/.gitkeep
+/sanity/.gitmodules
