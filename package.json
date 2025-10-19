@@ -1,0 +1,32 @@
+{
+  "name": "anim-gl",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"{src,content,scripts}/**/*.{js,json,html,md}\"",
+    "build:content": "bun run scripts/build-content.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "vite": "^7.1.7",
+    "vite-plugin-glsl": "^1.5.4"
+  },
+  "dependencies": {
+    "fontfaceobserver": "^2.3.0",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.11",
+    "ogl": "^1.0.11",
+    "split-type": "^0.3.4",
+    "swiper": "^12.0.2"
+  }
+}
