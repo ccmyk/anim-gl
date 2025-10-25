@@ -1183,6 +1183,7 @@ section.fake {
   font-family: montreal;
   font-display: swap;
   src: url(./fonts/PPNeueMontreal-Medium.woff2) format("woff2");
+    src: url(./fonts/PPNeueMontreal-Medium.woff) format("woff");
   font-weight: 530;
   font-style: normal;
 }
@@ -3509,6 +3510,11 @@ body {
 .home_about .cnt_im {
   position: relative;
   display: flex;
+}
+.home_about .cnt_x.cnt_im {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 :root.D .home_about .cnt_im {
   margin-left: 59.2rem;
