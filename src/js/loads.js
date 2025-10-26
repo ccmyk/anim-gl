@@ -1,3 +1,7 @@
+import {USE_SANITY} from '@/utils/env.js';
+import {isSanityEnabled} from '@/utils/sanityClient.js';
+import {fetchPageByLegacyId, fetchProjectByLegacyId} from '@/utils/sanityApi.js';
+
 export function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -24,7 +28,7 @@ export async function loadAppData(config = {}, legacyId, legacyTemplate) {
     webgl = this.main?.webgl ?? 1,
   } = config;
 
-  // Fetch the page-specific JSON content
+  // Fetch the page-specific content
   try {
     if (!id) {
       throw new Error('Missing page id for loadAppData()');
@@ -34,19 +38,34 @@ export async function loadAppData(config = {}, legacyId, legacyTemplate) {
     const normalizedBase = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
     const templateKey = typeof template === 'string' ? template.toLowerCase() : '';
     const collection = templateKey === 'project' ? 'project' : 'pages';
-    const fetchUrl =
-      normalizedBase && normalizedBase !== '/'
-        ? `${normalizedBase}/content/${collection}/${id}.json`
-        : `/content/${collection}/${id}.json`;
+    const shouldUseSanity =
+      USE_SANITY && isSanityEnabled && (this?.main?.sanityEnabled ?? true);
 
-    const response = await fetch(fetchUrl);
-    if (import.meta.env.DEV == true) {
-      console.log('Loading page data for ID:', id, 'template:', templateKey || '<none>', 'from', fetchUrl);
+    let pageData;
+    if (shouldUseSanity) {
+      const fetcher = collection === 'project' ? fetchProjectByLegacyId : fetchPageByLegacyId;
+      pageData = await fetcher(id);
+      if (import.meta.env.DEV == true) {
+        console.log('[Sanity] loadAppData', {id, collection, success: Boolean(pageData)});
+      }
+      if (!pageData) {
+        throw new Error(`Sanity: missing ${collection} document for legacyId=${id}`);
+      }
+    } else {
+      const fetchUrl =
+        normalizedBase && normalizedBase !== '/'
+          ? `${normalizedBase}/content/${collection}/${id}.json`
+          : `/content/${collection}/${id}.json`;
+
+      const response = await fetch(fetchUrl);
+      if (import.meta.env.DEV == true) {
+        console.log('Loading page data for ID:', id, 'template:', templateKey || '<none>', 'from', fetchUrl);
+      }
+      if (!response.ok) {
+        throw new Error(`Failed to load page ${id}: ${response.status}`);
+      }
+      pageData = await response.json();
     }
-    if (!response.ok) {
-      throw new Error(`Failed to load page ${id}: ${response.status}`);
-    }
-    const pageData = await response.json();
     if (pageData?.csskfields) {
       const sharedTextures = (this.main?.sharedTextures) || {};
       const refs = Array.isArray(pageData.csskfields.textureRefs) ? pageData.csskfields.textureRefs : [];

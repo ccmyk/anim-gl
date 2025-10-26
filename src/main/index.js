@@ -37,6 +37,7 @@ class App {
 
     this.content = document.querySelector('#content');
     this.main = info[0];
+    this.main.sanityEnabled = Boolean(info[1]?.sanityEnabled);
     if (info[1]?.textures) {
       this.main.sharedTextures = info[1].textures;
     }

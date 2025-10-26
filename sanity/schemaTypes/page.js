@@ -5,6 +5,13 @@ export default {
   fields: [
     { name: 'title', type: 'string', title: 'Title' },
     {
+      name: 'legacyId',
+      type: 'number',
+      title: 'Legacy ID',
+      description: 'Matches the numeric ID used in content/pages/*.json',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
