@@ -70,3 +70,5 @@ bun.lockb
 /sanity/.gitattributes
 /sanity/.gitconfig
 /sanity/.gitmodules
+
+public/uploads/

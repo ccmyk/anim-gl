@@ -26,7 +26,7 @@ Each texture key contains an **ARRAY of 4-5 media items**:
 
 | Key | Project | Items | Mix |
 |-----|---------|-------|-----|
-| prjs0 | 001 Gemini | 4 images | Images only |
+| prjs0 | 001 Gemini | |
 | prjs1 | 002 Banjo | 5 items | 3 videos + 2 images |
 | prjs2 | 003 Now New Next | 5 items | 2 videos + 3 images |
 | prjs3 | 004 Ciclope | 5 items | 3 videos + 2 images |
@@ -55,35 +55,34 @@ These are **SINGLE items**, not arrays:
 ## 📁 CONTENT STRUCTURE MAPPING
 
 ### Pages (`anim-gl/content/pages/`)
-| File | Route | HTML Location | Purpose |
-|------|-------|---------------|---------|
-| 2.json | / | index.html | Homepage |
-| 55.json | /index/ | index/index.html | Work index |
-| 240.json | /about/ | about/index.html | About page |
+| File     | Route        | HTML Location         | Purpose |
+|----------|--------------|-----------------------|---------|
+| 2.json   | /            | index.html            | Homepage |
+| 55.json  | /index/      | index/index.html      | Index |
+| 240.json | /about/      | about/index.html      | About |
 | 308.json | /playground/ | playground/index.html | Playground |
-| 1.json | /error/ | error/index.html | Error page |
+| 1.json   | /error/      | error/index.html      | Error |
 
 ### Projects (`anim-gl/content/project/`)
 | Number | File | Texture Keys | Slug |
-|--------|------|--------------|------|
-| 001 | 393.json | prjs0 | gemini |
-| 002 | 44.json | home0, prjs1 | banjo |
-| 003 | 82.json | prjs2 | now-new-next-website |
-| 004 | 90.json | home1, prjs3 | ciclope-fest-website |
-| 005 | 112.json | prjs4 | classe-website |
-| 006 | 123.json | home2, prjs5 | kids-agency-website |
-| 007 | 102.json | prjs6 | paya-health-e-commerce-website |
-| 008 | 193.json | prjs7 | villalon-studio-website |
+|--------|-------|--------------|------|
+| 001 | 393.json | home0, prjs0 | gemini |
+| 002 | 44.json  | home1, prjs1 | naked-juice |
+| 003 | 82.json  | home2, prjs2 | collective |
+| 004 | 90.json  | prjs3        | vuity |
+| 005 | 112.json | prjs4        | avail |
+| 006 | 123.json | prjs5        | bp |
+| 007 | 102.json | prjs6        | steelseries |
+| 008 | 193.json | prjs7        | t-mobile |
 
 ### Archive Projects (009-014)
-| Number | File | Project Name |
-|--------|------|--------------|
-| 009 | 135.json | Vibia Landing Page |
-| 010 | 185.json | Jesse Siu Portfolio |
-| 011 | 175.json | Point of Reference |
-| 012 | 218.json | Domestika Course |
-| 013 | 228.json | Pararemos Todo |
-| 014 | 203.json | Portfolio 2020 |
+| Number | File     | Project Name |
+|--------|----------|--------------|
+| 009    | 135.json | samsung |
+| 010    | 185.json | cargill |
+| 011    | 175.json | maven-wave |
+| 012    | 218.json | audible |
+| 013    | 228.json | google|
 
 ---
 
