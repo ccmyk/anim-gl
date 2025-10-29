@@ -72,3 +72,4 @@ bun.lockb
 /sanity/.gitmodules
 
 public/uploads/
+public/media/
