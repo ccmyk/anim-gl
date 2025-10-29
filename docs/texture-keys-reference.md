@@ -66,7 +66,7 @@ These are **SINGLE items**, not arrays:
 ### Projects (`anim-gl/content/project/`)
 | Number | File | Texture Keys | Slug |
 |--------|-------|--------------|------|
-| 001 | 393.json | home0, prjs0 | gemini |
+| 001 | 393.json | home0, prjs0 | options-institute |
 | 002 | 44.json  | home1, prjs1 | naked-juice |
 | 003 | 82.json  | home2, prjs2 | collective |
 | 004 | 90.json  | prjs3        | vuity |

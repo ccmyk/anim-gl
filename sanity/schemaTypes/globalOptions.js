@@ -7,13 +7,19 @@ export default {
       name: 'navHtml',
       type: 'text',
       title: 'Navigation HTML',
-      rows: 10,
+      rows: 50,
     },
     {
       name: 'loaderHtml',
       type: 'text',
       title: 'Loader HTML',
-      rows: 10,
+      rows: 15,
+    },    
+    {
+      name: 'mbgHtml',
+      type: 'text',
+      title: 'Mbg HTML',
+      rows: 70,
     },
     {
       name: 'textureRefs',
@@ -23,3 +29,4 @@ export default {
     },
   ],
 };
+
