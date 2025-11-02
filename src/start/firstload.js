@@ -1,60 +1,9 @@
-import {USE_SANITY} from '@/utils/env.js';
-import {isSanityEnabled} from '@/utils/sanityClient.js';
-import {
-  fetchGlobalOptions,
-  fetchPageByLegacyId,
-  fetchProjectByLegacyId,
-} from '@/utils/sanityApi.js';
-
 async function loadAppData({ device = 0, webp = 0, id = '', template = '', logged = 0, visible = 0, webgl = 1 }) {
   if (import.meta.env.DEV == true) {
     console.log('Loading app data:', { device, id, webp, template, logged, visible, webgl });
   }
 
-  // Load BOTH options.json AND the initial page data
   try {
-    const useSanity = USE_SANITY && isSanityEnabled;
-    if (useSanity) {
-      const [optionsData, pageDataRaw] = await Promise.all([
-        fetchGlobalOptions(),
-        id
-          ? (template?.toLowerCase() === 'project'
-              ? fetchProjectByLegacyId(id)
-              : fetchPageByLegacyId(id))
-          : Promise.resolve(null),
-      ]);
-
-      const pageData = pageDataRaw
-        ? {
-            ...pageDataRaw,
-            csskfields: {
-              ...pageDataRaw.csskfields,
-              textures: optionsData?.textures ?? {},
-            },
-          }
-        : null;
-
-      return {
-        device,
-        webp,
-        id,
-        template,
-        logged,
-        webgl,
-        visible,
-        sanityEnabled: true,
-        nav: optionsData?.nav ?? '',
-        loader: optionsData?.loader ?? '',
-        main: pageData?.csskfields?.main || '',
-        texs: optionsData?.textures ?? {},
-        textures: optionsData?.textures ?? {},
-        fields: {
-          base: window.location.origin,
-          template: template || pageData?.template || '',
-        },
-      };
-    }
-
     // Fetch options.json (contains nav, loader, global textures)
     const optionsResponse = await fetch('/content/options.json');
     if (!optionsResponse.ok) {
@@ -79,7 +28,7 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
 
     // Merge the loaded data with config
     // This matches the structure expected by the original WordPress version
-  return {
+    return {
       device,
       webp,
       id,
@@ -87,10 +36,10 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
       logged,
       webgl,
       visible,
-      sanityEnabled: false,
       // From options.json
       nav: optionsData.nav,
       loader: optionsData.loader,
+      mbg: optionsData.mbg,
       // The 'main' field contains the initial page HTML (if available from page data)
       main: pageData?.csskfields?.main || optionsData.main || '',
       // Textures from options.json (home0, home1, about0, etc.)
@@ -113,9 +62,9 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
       logged,
       webgl,
       visible,
-      sanityEnabled: false,
       nav: '',
       loader: '',
+      mbg: '',
       main: '',
       texs: {},
       textures: {},
