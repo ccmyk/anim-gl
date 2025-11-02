@@ -37,10 +37,7 @@ class App {
 
     this.content = document.querySelector('#content');
     this.main = info[0];
-    this.main.sanityEnabled = Boolean(info[1]?.sanityEnabled);
-    if (info[1]?.textures) {
-      this.main.sharedTextures = info[1].textures;
-    }
+    this.main.sharedTextures = info[1]?.textures || {};
     const fields = info[1]?.fields ?? {};
     const fallbackBaseRaw = typeof fields.base == 'string' ? fields.base : '';
     const trimmedFallback = fallbackBaseRaw.replace(/\/+$/, '');
@@ -157,6 +154,17 @@ class App {
     //Page
     this.page = this.pages.get(this.template);
     await this.page.create(this.content, this.main, firsttemp);
+
+    // Ensure global background container (.Mbg) exists if provided by options
+    try {
+      const hasMbg = document.querySelector('.Mbg');
+      if (!hasMbg && typeof temps.mbg === 'string' && temps.mbg.trim().length > 0) {
+        // Insert before main content so GL can attach its canvas after it
+        document.body.insertAdjacentHTML('afterbegin', temps.mbg);
+      }
+    } catch (err) {
+      console.warn('[App] Failed to insert global Mbg container:', err);
+    }
 
     //Nav
     this.nav = new Nav(this.main);
