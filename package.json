@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"{src,content,scripts}/**/*.{js,json,html,md}\"",
-    "build:content": "bun run scripts/build-content.js"
+    "build:content": "bun run scripts/build-content.js",
+    "dev:content": "bun --watch run scripts/build-content.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
