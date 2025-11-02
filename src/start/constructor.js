@@ -18,7 +18,15 @@ async function bootstrap() {
   }
 
   function normalizePath(pathname) {
-    if (pathname === '' || pathname === '/') return '/';
+    if (!pathname || pathname === '/') return '/';
+    // Treat .html paths (e.g. /index.html, /about/index.html) as their folder routes
+    if (pathname.endsWith('.html')) {
+      let p = pathname
+        .replace(/index\.html$/i, '')
+        .replace(/\.html$/i, '');
+      if (p === '' || p === '/') return '/';
+      return p.endsWith('/') ? p : p + '/';
+    }
     return pathname.endsWith('/') ? pathname : pathname + '/';
   }
 
