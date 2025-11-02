@@ -179,9 +179,9 @@ export async function createEls(el = null) {
         text:
           'Enthusiastic about graphic design, typography, and the dynamic areas of motion and web-based animations.' +
           br +
-          'Specialized in translating brands into unique and immersive digital' +
+          'Specialized in transforming brands into unique digital experiences' +
           br2 +
-          'user experiences.',
+          'and compelling visual narratives.',
 
         width: w,
         align: 'center',
