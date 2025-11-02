@@ -143,8 +143,11 @@ export async function loadImage(elem, nowait = null) {
     }
     let img = new Image();
     let url = '';
+    // Prefer data-src but allow data-oi as a fallback used by GL markup
     if (elem.dataset.src) {
       url = elem.dataset.src;
+    } else if (elem.dataset.oi) {
+      url = elem.dataset.oi;
     }
 
     let gif = 0;
@@ -250,7 +253,8 @@ export async function loadVideo(elem, nowait = false) {
         elem.src = elem.dataset.src + '.mp4';
       }
     } else {
-      elem.src = elem.dataset.src;
+      const src = elem.dataset.src || elem.dataset.oi || '';
+      elem.src = src;
     }
     elem.onerror = () => {
       resolve(elem);
