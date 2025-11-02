@@ -66,22 +66,22 @@
       }
     ],
     "home0": {
-      "v": "/media/oi-02_1440x1080.mp4",
+      "v": "/media/oi-01_1440x1080.mp4",
       "w": 720,
       "h": 540
     },
     "home1": {
-      "i": "/media/nj-01_1164x1558.jpg",
+      "i": "/media/nj-01_1164x1558.webp",
       "w": 860,
       "h": 1151
     },
     "home2": {
-      "i": "/media/collective-01_1440x1080.jpg",
+      "i": "/media/collective-01_1440x1080.webp",
       "w": 720,
       "h": 540
     },
     "about0": {
-      "i": "/uploads/2024/01/00_eva_sanchez_about_website-1366x2049.jpg",
+      "i": "/media/about-01_1366x2049.webp",
       "w": 860,
       "h": 1290
     }
