@@ -1,12 +1,11 @@
 # Serve actual pages directly (these must come FIRST)
-/index/             /index/index.html           200
-/about/             /about/index.html           200
-/error/             /error/index.html           200
+/index/*            /index/index.html           200!
+/index              /index/                     301
+/about/*            /about/index.html           200!
+/about              /about/                     301
+/error/*            /error/index.html           200!
+/error              /error/                     301
 /project/*/         /project/:splat/index.html  200
 
-# Ensure trailing slashes
-/index              /index/                     301
-/about              /about/                     301
-
-# SPA fallback - ONLY for routes that don't match above
-/*                  /index.html                 200
+# 404 fallback - Show error page for unmatched routes
+/*                  /error/index.html           404
