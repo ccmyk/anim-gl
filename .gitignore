@@ -38,38 +38,5 @@ bun.lockb
 # Optional: Track bun.lock for reproducible builds
 # bun.lock
 
-# Sanity Studio
-/sanity/node_modules
-/sanity/.sanity
-/sanity/dist
-/sanity/.env
-/sanity/.env.local
-/sanity/.env.development.local
-/sanity/.env.test.local
-/sanity/.env.production.local
-
-# Sanity lock files
-/sanity/bun.lockb
-# Optional: Track for reproducible builds
-# /sanity/bun.lock
-
-# Sanity build and cache files
-/sanity/static/*
-!/sanity/static/.gitkeep
-/sanity/*.log
-/sanity/.cache
-/sanity/logs
-/sanity/coverage
-/sanity/*.pem
-/sanity/*.tsbuildinfo
-/sanity/*.local
-
-# Remove nested git repos
-/sanity/.git
-/sanity/**/.git
-/sanity/.gitattributes
-/sanity/.gitconfig
-/sanity/.gitmodules
-
 public/uploads/
 public/media/
