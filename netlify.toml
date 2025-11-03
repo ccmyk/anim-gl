@@ -1,8 +1,51 @@
 [build]
-  command = "bun run build:content && bun run build && cp -r content dist/content && cp public/_redirects dist/_redirects"
+  command = "bun run build:content && bun run build && cp -r content dist/content"
   publish = "dist"
 
-# Redirects are now handled by public/_redirects file
+# Redirect rules
+[[redirects]]
+  from = "/index/*"
+  to = "/index/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/index"
+  to = "/index/"
+  status = 301
+
+[[redirects]]
+  from = "/about/*"
+  to = "/about/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/error/*"
+  to = "/error/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/error"
+  to = "/error/"
+  status = 301
+
+[[redirects]]
+  from = "/project/*/"
+  to = "/project/:splat/index.html"
+  status = 200
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/error/index.html"
+  status = 404
 
 [[headers]]
   for = "/assets/*"
