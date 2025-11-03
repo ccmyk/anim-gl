@@ -1,0 +1,6 @@
+# Ensure trailing slashes redirect properly
+/index  /index/  301
+/about  /about/  301
+
+# SPA fallback - only for routes that don't exist
+/*      /index.html   200
