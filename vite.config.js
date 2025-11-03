@@ -20,6 +20,7 @@ export default defineConfig({
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
+  publicDir: 'public',
   plugins: [
     glsl({
       include: /\.(glsl|vs|fs)$/i,
