@@ -1,6 +1,7 @@
 // vite.config.js
 import { defineConfig } from 'vite';
 import glsl from 'vite-plugin-glsl';
+import { resolve } from 'path';
 
 export default defineConfig({
   server: {
@@ -12,7 +13,15 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     rollupOptions: {
-      input: { main: './index.html' },
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        about: resolve(__dirname, 'about/index.html'),
+        index: resolve(__dirname, 'index/index.html'),
+        error: resolve(__dirname, 'error/index.html'),
+        'project-options-institute': resolve(__dirname, 'project/options-institute/index.html'),
+        'project-maven-wave': resolve(__dirname, 'project/maven-wave/index.html'),
+        'project-naked-juice': resolve(__dirname, 'project/naked-juice/index.html'),
+      },
     },
   },
   resolve: {
