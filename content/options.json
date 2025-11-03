@@ -4,106 +4,20 @@
   "mbg": "<div class=\"Mbg\"><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div><div class=\"Mbg_col\"><div class=\"Mbg_col_el Mbg_col_el-1\"></div><div class=\"Mbg_col_el Mbg_col_el-2\"></div></div></div>",
   "main": "",
   "textures": {
-    "prjs0": [
-      {
-        "v": "/media/oi-01_1440x1080.mp4",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/oi-02_1440x1080.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "v": "/media/oi-03_1600x1200.mp4",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/oi-05_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/oi-06_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      }
-    ],
-    "prjs1": [
-      {
-        "i": "/media/nj-03_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/nj-06_1600x1200.webp",
-        "w": 720,
-        "h": 540
-      },
-      {
-        "i": "/media/nj-05_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/nj-04_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/nj-08_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      }
-    ],
-    "prjs2": [
-      {
-        "i": "/media/mw-01_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/mw-02_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/mw-06_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/mw-07_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      },
-      {
-        "i": "/media/mw-05_1600x1200.webp",
-        "w": 860,
-        "h": 645
-      }
-    ],
     "home0": {
       "v": "/media/oi-01_1440x1080.mp4",
-      "w": 720,
-      "h": 540
+      "w": 860,
+      "h": 645
     },
     "home1": {
-      "i": "/media/nj-01_1164x1558.webp",
+      "i": "/media/nj-03_1600x1200.webp",
       "w": 860,
-      "h": 1151
+      "h": 645
     },
     "home2": {
       "i": "/media/mw-01_1600x1200.webp",
-      "w": 720,
-      "h": 540
-    },
-    "about0": {
-      "i": "/media/about-01_1366x2049.webp",
       "w": 860,
-      "h": 1290
+      "h": 645
     }
   }
 }

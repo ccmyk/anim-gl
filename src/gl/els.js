@@ -494,7 +494,25 @@ export async function createEls(el = null) {
         if (exists) {
           texture.image = exists;
         } else {
-          texture.image = await this.loadVideo(a, url);
+          // Set the video source and dimensions before loading
+          if (!a.src) {
+            a.src = url;
+          }
+          // Ensure video has dimensions for WebGL
+          if (!a.width || a.width === 0) {
+            a.width = parseInt(a.getAttribute('width')) || 720;
+          }
+          if (!a.height || a.height === 0) {
+            a.height = parseInt(a.getAttribute('height')) || 540;
+          }
+          try {
+            texture.image = await this.loadVideo(a, url);
+            console.log(`[Roll] Successfully loaded video: ${url}`, texture.image);
+          } catch (error) {
+            console.error(`[Roll] Failed to load video: ${url}`, error);
+            // Fallback to a placeholder image if video fails
+            texture.image = await this.loadImage('/public/favicon.svg');
+          }
         }
       } else {
         if (exists) {
