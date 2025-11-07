@@ -1,6 +1,7 @@
-# Redirect old numeric project URLs to new slugs
-/project/0   /project/options-institute/   301
-/project/1   /project/maven-wave/          301
-/project/2   /project/naked-juice/         301
-/project/3   /project/collective/          301
-/project/4   /project/bp/                  301
+/index/*            /index/index.html           200!
+/index              /index/                     301
+/about/*            /about/index.html           200!
+/about              /about/                     301
+/project/*          /project/:splat/index.html  200!
+
+
