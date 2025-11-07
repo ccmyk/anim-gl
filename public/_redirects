@@ -1,11 +1,17 @@
-# Serve actual pages directly (these must come FIRST)
+# Serve actual pages directly
 /index/*            /index/index.html           200!
 /index              /index/                     301
 /about/*            /about/index.html           200!
 /about              /about/                     301
 /error/*            /error/index.html           200!
 /error              /error/                     301
-/project/*/         /project/:splat/index.html  200
 
-# 404 fallback - Show error page for unmatched routes
+# Projects
+/project/*/         /project/:splat/index.html  200
+/project/*          /project/:splat/index.html  200
+
+# Explicitly route `/project` to error
+/project            /error/index.html           404
+
+# 404 fallback
 /*                  /error/index.html           404
