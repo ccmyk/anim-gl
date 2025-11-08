@@ -1,3 +1,5 @@
+import Analytics from '../utils/Analytics';
+
 class Nav {
   constructor(main) {
     this.main = main;
@@ -25,6 +27,7 @@ class Nav {
         els: el.querySelectorAll('.nav_right a'),
         city: el.querySelector('.nav_clock_p'),
         c: el.querySelector('.nav_logo'),
+        contact: el.querySelector('a[href^="mailto:"]'),
         h: el.querySelector('.nav_clock_h'),
         m: el.querySelector('.nav_clock_m'),
         a: el.querySelector('.nav_clock_a'),
@@ -32,6 +35,7 @@ class Nav {
 
       // Verify critical elements
       if (!this.DOM.c) console.warn('[Nav] Missing nav_logo element');
+      if (!this.DOM.contact) console.warn('[Nav] Missing contact link element');
       if (!this.DOM.h || !this.DOM.m || !this.DOM.a) console.warn('[Nav] Missing clock elements');
     } catch (error) {
       console.error('[Nav] Error creating navigation:', error);
@@ -255,6 +259,13 @@ class Nav {
         }
       };
     }
+
+    if (this.DOM.contact) {
+      this.DOM.contact.onclick = () => {
+        Analytics.trackContactClick();
+      };
+    }
+
     if (this.DOM.els) {
       this.els = [];
     }

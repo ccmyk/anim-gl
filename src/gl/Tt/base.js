@@ -1,4 +1,5 @@
 import { check, start, stop, updateX, updateY, updateScale } from './position.js';
+import Analytics from '@/utils/Analytics.js';
 
 import { Vec2, Renderer, Mesh, Transform, Camera } from 'ogl';
 
@@ -62,6 +63,9 @@ class Title {
     this.animin = null;
     /** @type {gsap.core.Timeline | null} */
     this.animout = null;
+
+    this.interactionStartTime = 0;
+    this.isInteracting = false;
 
     this.initEvents();
   }
@@ -184,6 +188,9 @@ class Title {
       this.animin?.play();
       this.lerp = 0.06;
     };
+    this.inFn = (e) => {
+      this.isInteracting = true;
+      this.interactionStartTime = performance.now();
 
     /** @param {MouseEvent | TouchEvent} e */
     this.mvFn = (e) => {
@@ -198,6 +205,14 @@ class Title {
 
     /** @param {MouseEvent | TouchEvent} e */
     this.lvFn = (e) => {
+      if (this.isInteracting) {
+        const duration = performance.now() - this.interactionStartTime;
+        // If they interacted for more than 2 seconds, track it as significant engagement.
+        if (duration > 2000) {
+          Analytics.trackWebglInteraction('hero_title', 'hover_duration', duration);
+        }
+      }
+      this.isInteracting = false;
       let lX = 0;
       if ('touches' in e) {
         lX = e.touches[0] ? e.touches[0].pageX - (this.bound?.[0] ?? 0) : 0;
