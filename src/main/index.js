@@ -7,6 +7,7 @@ import Loader from '@/components/Loader.js';
 import gl from '../gl/gl.js'; // Re-enabled for proper WebGL operation
 
 import { IS_DEV } from '@/utils/env.js';
+import Analytics from '@/utils/Analytics.js';
 
 //Mouse
 import Mouse from '@/components/Mouse.js';
@@ -242,6 +243,8 @@ class App {
 
     this.lenis.start();
     this.addControllers();
+
+    Analytics.trackPageView();
 
     this.isload = 0;
   }

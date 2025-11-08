@@ -28,12 +28,20 @@ const Analytics = {
    * @param {string} path - The new page path (e.g., '/about/').
    * @param {string} title - The new page title.
    */
-  trackPageView(path, title) {
-    console.log(`GA: PageView - ${title} (${path})`);
-    safeGtag('event', 'page_view', {
+  trackPageView(path = window.location.pathname, title = document.title) {
+    const location = window.location.href;
+    const params = {
       page_title: title,
       page_path: path,
-    });
+      page_location: location,
+    };
+
+    if (document.referrer) {
+      params.page_referrer = document.referrer;
+    }
+
+    console.log(`GA: PageView - ${title} (${path})`);
+    safeGtag('event', 'page_view', params);
   },
 
   /**

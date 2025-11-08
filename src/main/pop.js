@@ -135,6 +135,7 @@ export async function onRequest({ push, response, url }) {
     console.warn('[pop.js onRequest] Template not registered, falling back to error view:', this.template);
     this.template = 'error';
     this.content.dataset.template = 'error';
+    Analytics.trackPageView();
     this.content.dataset.id = this.content.dataset.id || '1';
     this.newpage = this.pages.get(this.template);
   }
