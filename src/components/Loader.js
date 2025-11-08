@@ -1,5 +1,3 @@
-import Analytics from '@/utils/Analytics.js';
-
 class Loader {
   constructor(main, temp, device) {
     this.main = main;
@@ -129,7 +127,6 @@ class Loader {
       delay: 0.2,
       ease: 'power2.inOut',
       onComplete: () => {
-        Analytics.trackLoaderCompletion();
         this.DOM.el.remove();
       },
     });

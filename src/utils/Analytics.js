@@ -1,5 +1,21 @@
 /**
  * @file Analytics.js
+ * @description A centralized and safe helper for tracking Google Analytics events.
+ * This module wraps all gtag calls in a function that first checks if gtag
+ * is available on the window object. This prevents the entire application
+ * from crashing if the Google Analytics script is blocked or fails to load,
+ * ensuring the site remains functional.
+ */
+
+function safeGtag(...args) {
+  if (typeof window.gtag === 'function') {
+    window.gtag(...args);
+  } else {
+    console.warn('GA: gtag() not available. Analytics event was not sent.', args);
+  }
+}
+
+/**
  * @description A centralized helper for tracking Google Analytics events.
  * This provides a single source of truth for all analytics events,
  * making the code cleaner and easier to maintain.
@@ -14,7 +30,7 @@ const Analytics = {
    */
   trackPageView(path, title) {
     console.log(`GA: PageView - ${title} (${path})`);
-    window.gtag('event', 'page_view', {
+    safeGtag('event', 'page_view', {
       page_title: title,
       page_path: path,
     });
@@ -25,7 +41,7 @@ const Analytics = {
    */
   trackContactClick() {
     console.log('GA: Event - contact_click');
-    window.gtag('event', 'contact_click', {
+    safeGtag('event', 'contact_click', {
       event_category: 'engagement',
       event_label: 'header_contact',
     });
@@ -37,7 +53,7 @@ const Analytics = {
    */
   trackProjectScroll(projectName) {
     console.log(`GA: Event - project_scroll_through, to: ${projectName}`);
-    window.gtag('event', 'project_scroll_through', {
+    safeGtag('event', 'project_scroll_through', {
       event_category: 'engagement',
       project_name: projectName,
     });
@@ -49,7 +65,7 @@ const Analytics = {
    */
   trackExternalLink(url) {
     console.log(`GA: Event - external_link_click, url: ${url}`);
-    window.gtag('event', 'external_link_click', {
+    safeGtag('event', 'external_link_click', {
       event_category: 'engagement',
       link_url: url,
     });
@@ -63,7 +79,7 @@ const Analytics = {
    */
   trackWebglInteraction(componentName, interactionType, value = 0) {
     console.log(`GA: Event - webgl_interaction, component: ${componentName}, type: ${interactionType}, value: ${Math.round(value)}`);
-    window.gtag('event', 'webgl_interaction', {
+    safeGtag('event', 'webgl_interaction', {
       component_name: componentName,
       interaction_type: interactionType,
       value: Math.round(value), // Ensure value is an integer
@@ -75,7 +91,7 @@ const Analytics = {
    */
   trackLoaderCompletion() {
     console.log('GA: Event - loader_animation_complete');
-    window.gtag('event', 'loader_animation_complete', {
+    safeGtag('event', 'loader_animation_complete', {
       event_category: 'engagement',
     });
   },
@@ -86,7 +102,7 @@ const Analytics = {
    */
   trackMouseTooltip(tooltipText) {
     console.log(`GA: Event - mouse_tooltip_reveal, text: ${tooltipText}`);
-    window.gtag('event', 'mouse_tooltip_reveal', {
+    safeGtag('event', 'mouse_tooltip_reveal', {
       event_category: 'engagement',
       tooltip_text: tooltipText,
     });
@@ -100,7 +116,7 @@ const Analytics = {
    */
   trackProjectItemHover(viewMode, projectName, duration) {
     console.log(`GA: Event - project_item_hover, project: ${projectName}, duration: ${duration}`);
-    window.gtag('event', 'project_item_hover', {
+    safeGtag('event', 'project_item_hover', {
       event_category: 'engagement',
       view_mode: viewMode,
       project_name: projectName,
