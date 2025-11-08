@@ -14,7 +14,7 @@ const Analytics = {
    */
   trackPageView(path, title) {
     console.log(`GA: PageView - ${title} (${path})`);
-    gtag('event', 'page_view', {
+    window.gtag('event', 'page_view', {
       page_title: title,
       page_path: path,
     });
@@ -25,7 +25,7 @@ const Analytics = {
    */
   trackContactClick() {
     console.log('GA: Event - contact_click');
-    gtag('event', 'contact_click', {
+    window.gtag('event', 'contact_click', {
       event_category: 'engagement',
       event_label: 'header_contact',
     });
@@ -37,7 +37,7 @@ const Analytics = {
    */
   trackProjectScroll(projectName) {
     console.log(`GA: Event - project_scroll_through, to: ${projectName}`);
-    gtag('event', 'project_scroll_through', {
+    window.gtag('event', 'project_scroll_through', {
       event_category: 'engagement',
       project_name: projectName,
     });
@@ -49,7 +49,7 @@ const Analytics = {
    */
   trackExternalLink(url) {
     console.log(`GA: Event - external_link_click, url: ${url}`);
-    gtag('event', 'external_link_click', {
+    window.gtag('event', 'external_link_click', {
       event_category: 'engagement',
       link_url: url,
     });
@@ -62,8 +62,8 @@ const Analytics = {
    * @param {number} [value=0] - An optional value, like interaction duration in ms.
    */
   trackWebglInteraction(componentName, interactionType, value = 0) {
-    console.log(`GA: Event - webgl_interaction, component: ${componentName}, type: ${interactionType}`);
-    gtag('event', 'webgl_interaction', {
+    console.log(`GA: Event - webgl_interaction, component: ${componentName}, type: ${interactionType}, value: ${Math.round(value)}`);
+    window.gtag('event', 'webgl_interaction', {
       component_name: componentName,
       interaction_type: interactionType,
       value: Math.round(value), // Ensure value is an integer
@@ -75,7 +75,7 @@ const Analytics = {
    */
   trackLoaderCompletion() {
     console.log('GA: Event - loader_animation_complete');
-    gtag('event', 'loader_animation_complete', {
+    window.gtag('event', 'loader_animation_complete', {
       event_category: 'engagement',
     });
   },
@@ -86,7 +86,7 @@ const Analytics = {
    */
   trackMouseTooltip(tooltipText) {
     console.log(`GA: Event - mouse_tooltip_reveal, text: ${tooltipText}`);
-    gtag('event', 'mouse_tooltip_reveal', {
+    window.gtag('event', 'mouse_tooltip_reveal', {
       event_category: 'engagement',
       tooltip_text: tooltipText,
     });
@@ -100,7 +100,7 @@ const Analytics = {
    */
   trackProjectItemHover(viewMode, projectName, duration) {
     console.log(`GA: Event - project_item_hover, project: ${projectName}, duration: ${duration}`);
-    gtag('event', 'project_item_hover', {
+    window.gtag('event', 'project_item_hover', {
       event_category: 'engagement',
       view_mode: viewMode,
       project_name: projectName,
