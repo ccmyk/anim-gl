@@ -21,6 +21,8 @@ export default defineConfig({
         'project-options-institute': resolve(__dirname, 'project/options-institute/index.html'),
         'project-maven-wave': resolve(__dirname, 'project/maven-wave/index.html'),
         'project-naked-juice': resolve(__dirname, 'project/naked-juice/index.html'),
+        'project-collective': resolve(__dirname, 'project/collective/index.html'),
+        'project-bp': resolve(__dirname, 'project/bp/index.html'),
       },
     },
   },
