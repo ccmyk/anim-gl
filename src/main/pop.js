@@ -1,5 +1,4 @@
 import { IS_DEV } from '@/utils/env.js';
-import Analytics from '@/utils/Analytics.js';
 
 export function addPop() {}
 
@@ -135,7 +134,6 @@ export async function onRequest({ push, response, url }) {
     console.warn('[pop.js onRequest] Template not registered, falling back to error view:', this.template);
     this.template = 'error';
     this.content.dataset.template = 'error';
-    Analytics.trackPageView();
     this.content.dataset.id = this.content.dataset.id || '1';
     this.newpage = this.pages.get(this.template);
   }
@@ -220,10 +218,6 @@ export function resetLinks() {
     } else if (link.href.indexOf('mailto') == -1 && link.href.indexOf('tel') == -1) {
       link.rel = 'noopener';
       link.target = '_blank';
-      // Add analytics tracking for external links
-      link.onclick = () => {
-        Analytics.trackExternalLink(link.href);
-      };
     }
     //CLEAN CLASS
     if (actual == link.href) {

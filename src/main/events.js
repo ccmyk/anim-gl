@@ -1,5 +1,3 @@
-import Analytics from '@/utils/Analytics.js';
-
 export function addEvents() {
   this.main.events = {
     startscroll: new Event('startscroll'),
@@ -41,16 +39,6 @@ export function addEvents() {
     });
     await window.waiter(300);
 
-    try {
-      // Extract project name from URL (e.g., /project/naked-juice/ -> naked-juice)
-      const urlParts = e.detail.url.split('/').filter(Boolean);
-      if (urlParts[0] === 'project' && urlParts[1]) {
-        Analytics.trackProjectScroll(urlParts[1]);
-      }
-    } catch (error) {
-      console.warn('[Analytics] Could not track project scroll:', error);
-    }
-
     this.onChange({
       url: e.detail.url,
       link: e.detail.el,
@@ -65,10 +53,6 @@ export function addEvents() {
       this.lenis.scrollTo(0);
       await window.waiter(600);
       this.controlScroll(0);
-      // Track the project view toggle event for analytics
-      const viewMode = e.detail.state === 1 ? 'list' : 'stack';
-      // We'll reuse the webgl_interaction event for this, as it's a UI interaction related to a GL component
-      Analytics.trackWebglInteraction('project_view_toggle', viewMode);
 
       Promise.all([this.gl.changeSlides(e.detail.state)]).then(() => {
         this.controlScroll(1);

@@ -1,7 +1,5 @@
 'use strict';
 
-import Analytics from '@/utils/Analytics.js';
-
 export default class {
   constructor(main) {
     this.main = main;
@@ -100,9 +98,6 @@ export default class {
       aW.classList.add();
       aW.innerHTML = el.dataset.tt;
       this.animev.detail.state = 0;
-
-      Analytics.trackMouseTooltip(el.dataset.tt);
-
       this.animev.detail.el = aW;
       document.dispatchEvent(this.animev);
 
