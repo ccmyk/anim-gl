@@ -16,6 +16,7 @@ class Roll {
 
     this.parent = document.querySelector('.cRoll');
     this.singles = document.querySelectorAll('.stck_hold .single');
+    this.list = document.querySelector('.cnt_els_tx');
 
     this.renderer.gl.canvas.classList.add('hideme');
 
@@ -283,6 +284,9 @@ class Roll {
     let bound = this.el.getBoundingClientRect();
     this.bound = [bound.x, bound.y, bound.width, bound.height];
 
+    const listRect = this.list ? this.list.getBoundingClientRect() : bound;
+    const listHeight = this.list ? this.list.scrollHeight : this.el.clientHeight;
+
     this.screen = [this.parent.clientWidth, this.parent.clientHeight];
 
     this.aspect = this.parent.clientWidth / this.parent.clientHeight;
@@ -291,8 +295,8 @@ class Roll {
     let calc = 0;
     let fix = parseInt(this.screen[1] + this.el.clientHeight);
 
-    this.ctr.start = parseInt(bound.y + window.scrollY - this.parent.clientHeight);
-    this.ctr.limit = this.el.clientHeight + this.parent.clientHeight;
+    this.ctr.start = parseInt(listRect.top + window.scrollY - this.parent.clientHeight);
+    this.ctr.limit = listHeight + this.parent.clientHeight;
 
     this.updateY();
     this.updateScale();
