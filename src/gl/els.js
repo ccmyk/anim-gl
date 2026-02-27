@@ -200,8 +200,6 @@ export async function createEls(el = null) {
       });
     }
 
-    //📐📐📐📐📐📐📐
-
     const geometry = new Geometry(gl, {
       position: { size: 3, data: text.buffers.position },
       uv: { size: 2, data: text.buffers.uv },
@@ -210,7 +208,6 @@ export async function createEls(el = null) {
     });
     geometry.computeBoundingBox();
 
-    //📺📺📺📺📺📺📺
     const texTx = new Texture(gl, {
       generateMipmaps: false,
     });
@@ -220,15 +217,14 @@ export async function createEls(el = null) {
     let program = '';
 
     if (temp == 'foot') {
-      // Get the innerHTML length with a safer approach
-      const oielElement = el.parentNode.querySelector('.Oiel');
-      const charCount = oielElement ? oielElement.innerHTML.length : 10; // Fallback to 10 if element not found
 
-      // Ensure we have a valid character count
+      const oielElement = el.parentNode.querySelector('.Oiel');
+      const charCount = oielElement ? oielElement.innerHTML.length : 10;
+
       const safeCharCount = Math.max(1, charCount);
 
       let shaderMod = textFF;
-      // Replace the placeholder with the character count
+
       shaderMod = shaderMod.replaceAll('PITO', safeCharCount);
 
       console.log(`Initializing foot shader with ${safeCharCount} characters`);
@@ -246,15 +242,13 @@ export async function createEls(el = null) {
         depthWrite: false,
       });
     } else if (temp == 'about') {
-      // Get the innerHTML length with a safer approach
-      const oielElement = el.parentNode.querySelector('.Oiel');
-      const charCount = oielElement ? oielElement.innerHTML.length : 10; // Fallback to 10 if element not found
 
-      // Ensure we have a valid character count
+      const oielElement = el.parentNode.querySelector('.Oiel');
+      const charCount = oielElement ? oielElement.innerHTML.length : 10;
+
       const safeCharCount = Math.max(1, charCount);
 
       let shaderMod = textFA;
-      // Replace the placeholder with the character count
       shaderMod = shaderMod.replaceAll('PITO', safeCharCount);
 
       console.log(`Initializing about shader with ${safeCharCount} characters`);
@@ -274,7 +268,7 @@ export async function createEls(el = null) {
       });
     } else {
       const oielElement = el.parentNode.querySelector('.Oiel');
-      const charCount = oielElement ? oielElement.innerHTML.length : 10; // Fallback to 10 if element not found
+      const charCount = oielElement ? oielElement.innerHTML.length : 10;
 
       const safeCharCount = Math.max(1, charCount);
 
@@ -343,13 +337,9 @@ export async function createEls(el = null) {
       mesh.position.y = text.height * 0.58;
     }
 
-    // Determine text color based on background
-    // Check if page has black background (Bg component exists)
     const hasBgComponent = document.querySelector('.Oi[data-temp="bg"]') !== null;
 
     if (el.dataset.white) {
-      // If data-white is set, use white (1) when there's a black background
-      // Otherwise use black (0) for default light background
       program.uniforms.uColor.value = hasBgComponent ? 1 : 0;
     }
 
@@ -469,8 +459,6 @@ export async function createEls(el = null) {
     gl.canvas.classList.add('glRoll');
     parent.appendChild(gl.canvas);
 
-    //📐📐📐📐📐📐📐
-
     const geometry = new Triangle(gl);
 
     const textures = [];
@@ -485,7 +473,7 @@ export async function createEls(el = null) {
       console.log(`[Roll] Attempting to load media: ${url}`);
       if (!url || typeof url != 'string') {
         console.warn('No valid source found for element:', a);
-        continue; // Skip this iteration if the url is invalid
+        continue;
       }
 
       let exists = this.texs.find((element) => element.src == url);
@@ -494,11 +482,11 @@ export async function createEls(el = null) {
         if (exists) {
           texture.image = exists;
         } else {
-          // Set the video source and dimensions before loading
+  
           if (!a.src) {
             a.src = url;
           }
-          // Ensure video has dimensions for WebGL
+
           if (!a.width || a.width === 0) {
             a.width = parseInt(a.getAttribute('width')) || 720;
           }
@@ -510,7 +498,7 @@ export async function createEls(el = null) {
             console.log(`[Roll] Successfully loaded video: ${url}`, texture.image);
           } catch (error) {
             console.error(`[Roll] Failed to load video: ${url}`, error);
-            // Fallback to a placeholder image if video fails
+
             texture.image = await this.loadImage('/public/favicon.svg');
           }
         }
@@ -554,19 +542,14 @@ export async function createEls(el = null) {
 
     return new Roll(obj);
   } else if (temp == 'slider') {
-    //SliderSliderSliderSliderSliderSliderSliderSliderSliderSliderSliderSliderSliderSliderSlider
 
-    //Inits
-
-    // Get the canvas container (.cCover) for proper sizing
     const canvasContainer = el.parentNode.querySelector('.cCover');
     const containerBounds = canvasContainer.getBoundingClientRect();
 
-    // Set up responsive canvas sizing for slider
     const renderer = new Renderer({
       alpha: true,
       dpr: Math.min(Math.max(window.devicePixelRatio, 1.5), 2),
-      // Ensure the canvas size matches the container size for proper rendering
+
       width: containerBounds.width || el.offsetWidth,
       height: containerBounds.height || el.offsetHeight,
     });
@@ -601,7 +584,7 @@ export async function createEls(el = null) {
       console.log(`[Slider] Attempting to load media: ${url}`);
       if (!url || typeof url != 'string') {
         console.warn('No valid source found for element:', a);
-        continue; // Skip this iteration if the url is invalid
+        continue;
       }
 
       let exists = this.texs.find((element) => element.src == url);
@@ -649,7 +632,6 @@ export async function createEls(el = null) {
         },
       });
     }
-    //Single
 
     const obj = {
       el,
@@ -666,7 +648,6 @@ export async function createEls(el = null) {
     };
     return new Sl(obj);
   } else if (temp == 'pg') {
-    //PgPgPgPgPgPg
 
     const renderer = new Renderer({
       alpha: true,
@@ -675,13 +656,12 @@ export async function createEls(el = null) {
       width: window.innerWidth,
       height: el.innerHeight,
     });
-    //📐📐📐📐📐📐📐
 
     const { gl } = renderer;
 
     gl.canvas.classList.add('glPlay');
     document.body.appendChild(gl.canvas);
-    //📽️📽️📽️📽️📽️📽️📽️📽️
+
     const cam = this.createCamera(gl);
     const scene = new Transform();
 
@@ -690,7 +670,6 @@ export async function createEls(el = null) {
       widthSegments: 1,
     });
 
-    //📺📺📺📺📺📺📺
     const texture = new Texture(gl, {
       generateMipmaps: false,
     });
@@ -718,7 +697,6 @@ export async function createEls(el = null) {
     };
     return obj;
   } else {
-    //MediaMediaMediaMediaMediaMedia
 
     const renderer = new Renderer({
       alpha: true,
@@ -727,7 +705,6 @@ export async function createEls(el = null) {
       width: el.offsetWidth,
       height: el.offsetHeight,
     });
-    //📐📐📐📐📐📐📐
 
     const { gl } = renderer;
 
@@ -739,7 +716,6 @@ export async function createEls(el = null) {
       widthSegments: 1,
     });
 
-    //📺📺📺📺📺📺📺
     const texture = new Texture(gl, {
       generateMipmaps: false,
     });
@@ -748,7 +724,7 @@ export async function createEls(el = null) {
     console.log(`[Media] Attempting to load media: ${url}`);
     if (!url || typeof url != 'string') {
       console.warn('No valid source found for element:', el);
-      // Create a placeholder texture to avoid a crash
+      
       const canvas = document.createElement('canvas');
       canvas.width = 1;
       canvas.height = 1;

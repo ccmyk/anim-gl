@@ -5076,6 +5076,15 @@ body {
     padding-bottom: 6.7rem;
   }
 }
+@media (max-width: 745px) {
+  .about_intro {
+    height: auto !important;
+    min-height: 100svh !important;
+    padding-top: 6rem !important;
+    padding-bottom: 6rem !important;
+    justify-content: flex-start !important;
+  }
+}
 .about_intro .Atext {
   text-align: center;
   --dark: #8a8a8a;
