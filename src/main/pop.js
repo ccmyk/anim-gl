@@ -194,7 +194,7 @@ export function resetLinks() {
       link.removeAttribute('data-type');
     }
 
-    if (isLocal || isAnchor) {
+        if ((isLocal || isAnchor) && !link.href.endsWith('.pdf')) {
       link.onclick = async (event) => {
         event.preventDefault();
 
@@ -215,6 +215,8 @@ export function resetLinks() {
           }
         }
       };
+        } else if (link.href.endsWith('.pdf')) {
+      link.target = '_blank';
     } else if (link.href.indexOf('mailto') == -1 && link.href.indexOf('tel') == -1) {
       link.rel = 'noopener';
       link.target = '_blank';
