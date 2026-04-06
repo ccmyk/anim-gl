@@ -5,6 +5,7 @@ npm-debug.log*
 
 # Build outputs
 build/
+docs/
 node_modules/
 dist/
 dist-ssr
