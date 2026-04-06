@@ -13,6 +13,7 @@
   Cache-Control: public, max-age=300
 
 # Private-share assets: discourage discovery/indexing and referrer leakage
+# (Previews are maintained as JPG/PNG for social-preview compatibility)
 /archive/*
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Referrer-Policy: no-referrer

@@ -1,3 +1,4 @@
+# Keep private-share assets out of indexing/crawling
 User-agent: *
 Disallow: /archive/
 Disallow: /previews/
