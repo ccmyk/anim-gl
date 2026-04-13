@@ -1,6 +1,5 @@
 import Page from '@/js/pagemain.js';
 
-//COMPS
 import Intro from './0Intro/index.js';
 
 class Home extends Page {

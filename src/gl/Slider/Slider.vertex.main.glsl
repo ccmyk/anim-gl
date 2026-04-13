@@ -16,7 +16,7 @@ uniform vec2 uMouse;
 varying vec2 vUv;
 
 void main() {
-    vUv = uv.xy;
+  vUv = uv.xy;
 
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }

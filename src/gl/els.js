@@ -71,7 +71,6 @@ export async function createAssets(texs) {
   video.dataset.auto = true;
   video.preload = 'auto'; // Ensure video preloading
 
-  // Helper function to safely load a video with fallback
   const safeLoadVideo = async (vidElement, src) => {
     if (!src || typeof src != 'string') {
       console.warn('safeLoadVideo: a valid video source was not provided.');
@@ -217,7 +216,6 @@ export async function createEls(el = null) {
     let program = '';
 
     if (temp == 'foot') {
-
       const oielElement = el.parentNode.querySelector('.Oiel');
       const charCount = oielElement ? oielElement.innerHTML.length : 10;
 
@@ -242,7 +240,6 @@ export async function createEls(el = null) {
         depthWrite: false,
       });
     } else if (temp == 'about') {
-
       const oielElement = el.parentNode.querySelector('.Oiel');
       const charCount = oielElement ? oielElement.innerHTML.length : 10;
 
@@ -453,7 +450,6 @@ export async function createEls(el = null) {
       height: parent.offsetHeight,
     });
     const { gl } = renderer;
-    //Slider
     const scene = new Transform();
 
     gl.canvas.classList.add('glRoll');
@@ -482,7 +478,6 @@ export async function createEls(el = null) {
         if (exists) {
           texture.image = exists;
         } else {
-  
           if (!a.src) {
             a.src = url;
           }
@@ -542,7 +537,6 @@ export async function createEls(el = null) {
 
     return new Roll(obj);
   } else if (temp == 'slider') {
-
     const canvasContainer = el.parentNode.querySelector('.cCover');
     const containerBounds = canvasContainer.getBoundingClientRect();
 
@@ -567,8 +561,6 @@ export async function createEls(el = null) {
       heightSegments: 1,
       widthSegments: 1,
     });
-
-    //👓👓👓👓👓👓👓
 
     const textures = [];
     const meshes = [];
@@ -648,7 +640,6 @@ export async function createEls(el = null) {
     };
     return new Sl(obj);
   } else if (temp == 'pg') {
-
     const renderer = new Renderer({
       alpha: true,
       dpr: Math.max(window.devicePixelRatio, 2),
@@ -697,7 +688,6 @@ export async function createEls(el = null) {
     };
     return obj;
   } else {
-
     const renderer = new Renderer({
       alpha: true,
       dpr: Math.max(window.devicePixelRatio, 2),
@@ -724,7 +714,7 @@ export async function createEls(el = null) {
     console.log(`[Media] Attempting to load media: ${url}`);
     if (!url || typeof url != 'string') {
       console.warn('No valid source found for element:', el);
-      
+
       const canvas = document.createElement('canvas');
       canvas.width = 1;
       canvas.height = 1;

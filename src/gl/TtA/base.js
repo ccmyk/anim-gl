@@ -35,7 +35,6 @@ class About {
 
     this.change = 0;
     this.stopt = 0;
-    //MOUSE
 
     this.norm = 0;
     this.end = 0;
@@ -48,7 +47,7 @@ class About {
         this.post.passes[0].program.uniforms.uMouse,
         { value: -1 },
         { value: 1.2, duration: 1, immediateRender: false, ease: 'none' },
-        0
+        0,
       );
     this.animmouse.progress(0);
 
@@ -154,7 +153,7 @@ class About {
           duration: 1,
           ease: 'power2.inOut',
         },
-        0
+        0,
       )
       .to(
         this.post.passes[0].program.uniforms.uStart,
@@ -163,7 +162,7 @@ class About {
           duration: 1,
           ease: 'power2.inOut',
         },
-        0
+        0,
       )
 
       .to(
@@ -173,7 +172,7 @@ class About {
           duration: 0.6,
           ease: 'power2.inOut',
         },
-        0.4
+        0.4,
       );
   }
 }

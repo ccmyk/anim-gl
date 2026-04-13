@@ -22,13 +22,13 @@ vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
 float cnoise(vec2 P){
   vec4 Pi = floor(P.xyxy) + vec4(0.0, 0.0, 1.0, 1.0);
   vec4 Pf = fract(P.xyxy) - vec4(0.0, 0.0, 1.0, 1.0);
-  Pi = mod(Pi, 289.0); // To avoid truncation effects in permutation
+  Pi = mod(Pi, 289.0);
   vec4 ix = Pi.xzxz;
   vec4 iy = Pi.yyww;
   vec4 fx = Pf.xzxz;
   vec4 fy = Pf.yyww;
   vec4 i = permute(permute(ix) + iy);
-  vec4 gx = 2.0 * fract(i * 0.0243902439) - 1.0; // 1/41 = 0.024...
+  vec4 gx = 2.0 * fract(i * 0.0243902439) - 1.0;
   vec4 gy = abs(gx) - 0.5;
   vec4 tx = floor(gx + 0.5);
   gx = gx - tx;
@@ -55,40 +55,8 @@ float cnoise(vec2 P){
 void main() {
   float prog = 0.5;
   float time = uStart1;
-  // float time2 = (sin(uTime * .001) * -.51 );
   float time2 = uStart1 * 2.;
-  // time *= -1.;
   prog = 0.4;
-  // time = uStart0;
-  // time2 = uStart1;
-
-  // float noise = cnoise((vec2(vUv.x*.6,vUv.y) * time2) + (time * 3.6) + time)*3.;
-  // float noise = cnoise(
-  //   vec2(
-  //   ((vUv.y*.85)+.35)
-  //   )
-  // )*3.;
-
-  // float noise = cnoise(
-  //   vec2(
-  //   vUv.x*(.6 * time2),
-  //    ((vUv.x * (.1 + ( time * .5) )) + .5 - time) - (.12 * vUv.y)
-  //   )
-  // )*3.;
-
-  // float noise = cnoise(
-  //   vec2(
-  //   vUv.x+(1. * uStartX),
-  //   vUv.y+(1. * uStartY),
-  //   )
-  // )*3.;
-
-  // float noise = cnoise(
-  //   vec2(
-  //   (vUv.x * ( -.25 )) + uStartX,
-  //   vUv.y +(1. +  uStartY)
-  //   )
-  // )*3.;
 
   float noise = cnoise(
     vec2(
@@ -98,14 +66,7 @@ void main() {
   )*3.;
 
   gl_FragColor.rgb = vec3(0.);
-  // gl_FragColor.a = (( uStart1 ) - (noise + prog)) * ( uStart0);
-
-  // gl_FragColor.a = uStart0 - ((noise + prog) * (1. - uStart1));
-  // gl_FragColor.a = uStart0 + (noise + prog);
-  
-
   gl_FragColor.a = mix(1., (noise + prog),uStart0);
-  
 
   gl_FragColor.a *= uStart2; 
 }

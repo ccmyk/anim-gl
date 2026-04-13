@@ -25,7 +25,6 @@ varying vec3 vPos;
 varying float vId;
 varying vec3 vIndex;
 
-//https://www.shadertoy.com/view/XsfSRr
 
 float ripple(float uv, float time, float prog) {
         float distance = length((uv ) + time  );
@@ -36,7 +35,6 @@ float ripple(float uv, float time, float prog) {
 
 void main() {
 
-    // uv.y += sin(uTime*.0005) * (vId.x + 1. )*.014;
     float time = abs(sin(uTime * 0.002));
     float time2 = (sin(uTime * 0.001));
     float time3 = abs( sin(uTime * 0.001) ) ;

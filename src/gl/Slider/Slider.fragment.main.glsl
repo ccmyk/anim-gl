@@ -8,7 +8,7 @@ uniform sampler2D tMap;
 
 varying vec2 vUv;
 
-vec2 coverTexture( vec2 imgSize, vec2 ouv, vec2 mouse) {
+vec2 coverTexture(vec2 imgSize, vec2 ouv, vec2 mouse) {
   vec2 s = uCover;
   vec2 i = imgSize;
 
@@ -22,6 +22,6 @@ vec2 coverTexture( vec2 imgSize, vec2 ouv, vec2 mouse) {
 }
 
 void main() {
-  vec2 cover = coverTexture(uTextureSize, vUv,vec2(0.));
-  gl_FragColor  = texture2D(tMap, cover);
+  vec2 cover = coverTexture(uTextureSize, vUv, vec2(0.0));
+  gl_FragColor = texture2D(tMap, cover);
 }

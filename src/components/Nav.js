@@ -30,7 +30,6 @@ class Nav {
         a: el.querySelector('.nav_clock_a'),
       };
 
-      // Verify critical elements
       if (!this.DOM.c) console.warn('[Nav] Missing nav_logo element');
       if (!this.DOM.h || !this.DOM.m || !this.DOM.a) console.warn('[Nav] Missing clock elements');
     } catch (error) {
@@ -47,31 +46,22 @@ class Nav {
 
     this.clockact = 0;
 
-    //LOGO
-
     this.main.events.anim.detail.state = 0;
     this.main.events.anim.detail.el = this.DOM.c;
     document.dispatchEvent(this.main.events.anim);
-
-    //CITY
 
     this.main.events.anim.detail.state = 0;
     this.main.events.anim.detail.el = this.DOM.city;
     document.dispatchEvent(this.main.events.anim);
 
-    //HOUR
-
     this.main.events.anim.detail.state = 0;
     this.main.events.anim.detail.el = this.DOM.h;
     document.dispatchEvent(this.main.events.anim);
-
-    //MINUTE
 
     this.main.events.anim.detail.state = 0;
     this.main.events.anim.detail.el = this.DOM.m;
     document.dispatchEvent(this.main.events.anim);
 
-    //AMPM
     this.main.events.anim.detail.state = 0;
     this.main.events.anim.detail.el = this.DOM.a;
     document.dispatchEvent(this.main.events.anim);
@@ -96,7 +86,7 @@ class Nav {
       } else {
         m = parseInt(
           this.DOM.m.querySelectorAll('.char')[0].querySelector('.n').innerHTML +
-            this.DOM.m.querySelectorAll('.char')[1].querySelector('.n').innerHTML
+            this.DOM.m.querySelectorAll('.char')[1].querySelector('.n').innerHTML,
         );
         m++;
 
@@ -165,7 +155,7 @@ class Nav {
 
     const actualh = parseInt(
       this.DOM.h.querySelectorAll('.char')[0].querySelector('.n').innerHTML +
-        this.DOM.h.querySelectorAll('.char')[1].querySelector('.n').innerHTML
+        this.DOM.h.querySelectorAll('.char')[1].querySelector('.n').innerHTML,
     );
 
     this.DOM.h.querySelectorAll('.char')[0].querySelector('.n').innerHTML = h.toString()[0];

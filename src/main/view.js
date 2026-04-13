@@ -1,4 +1,3 @@
-//VIEWS
 import Home from '@/views/Home/home.js';
 import Projects from '@/views/Projects/projects.js';
 import Project from '@/views/Project/project.js';

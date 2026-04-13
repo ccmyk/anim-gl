@@ -1,11 +1,9 @@
-//READY
 export async function getReady() {
   this.cleanP();
   this.cleanWysi();
   await this.startComps();
 }
 
-//INTRO
 export async function show() {
   this.showIos();
   this.onResize();
@@ -23,7 +21,6 @@ export async function start(val = 0) {
 export async function animIntro() {
   await gsap.fromTo(this.DOM.el, { opacity: 1, duration: 0.45, delay: 0.1 });
 }
-//OUT
 export async function animOut() {
   if (this.main.isTouch) {
     this.DOM.el.classList.add('isGone');

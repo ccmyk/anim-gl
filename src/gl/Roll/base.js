@@ -35,7 +35,6 @@ class Roll {
 
     this.change = 0;
     this.stopt = 0;
-    //MOUSE
 
     this.norm = 0;
     this.end = 0;
@@ -87,19 +86,19 @@ class Roll {
                 this.checkVid(0, 1);
               },
             },
-            del
+            del,
           )
           .fromTo(
             this.mesh.program.uniforms.uStart,
             { value: 0 },
             { value: 0.4, duration: 0.6, ease: 'power2.inOut' },
-            del
+            del,
           )
           .fromTo(
             this.mesh.program.uniforms.uEnd,
             { value: 0.4 },
             { value: 0, duration: 0.6, ease: 'power2.inOut' },
-            del
+            del,
           );
       } else {
         del = 0.4;
@@ -130,7 +129,7 @@ class Roll {
               }
             },
           },
-          i + del
+          i + del,
         );
         if (this.textures[i + 1]) {
           this.animctr
@@ -138,27 +137,25 @@ class Roll {
               this.mesh.program.uniforms.uChange,
               { value: 0 },
               { value: 1, duration: 0.6, ease: 'power2.inOut' },
-              i + del
+              i + del,
             )
             .fromTo(
               this.mesh.program.uniforms.uStart,
               { value: 0 },
               { value: 0.4, duration: 0.6, ease: 'power2.inOut' },
-              i + del
+              i + del,
             )
             .fromTo(
               this.mesh.program.uniforms.uEnd,
               { value: 0.4 },
               { value: 0, duration: 0.6, ease: 'power2.inOut' },
-              i + del
+              i + del,
             );
         } else {
         }
       }
     }
 
-    //STATE
-    //al -1 si está animando?
     this.state = 0;
 
     this.initEvents();
@@ -266,7 +263,7 @@ class Roll {
           duration: 1,
           ease: 'power2.inOut',
         },
-        0
+        0,
       )
 
       .to(
@@ -276,7 +273,7 @@ class Roll {
           duration: 0.6,
           ease: 'power2.inOut',
         },
-        0.4
+        0.4,
       );
   }
 
@@ -324,7 +321,7 @@ class Roll {
               this.renderer.gl.canvas.classList.remove('hideme');
             },
           },
-          0
+          0,
         );
     } else {
       this.renderer.gl.canvas.classList.add('hideme');

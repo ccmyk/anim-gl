@@ -33,7 +33,6 @@ vec2 resizeUvCover(vec2 uv, vec2 size, vec2 resolution) {
 }
 void main() {
 
-//  + ((1.2 -  uStart) * 2.4)
   vUv = uv;
   vUv1 = resizeUvCover(vec2(uv.x,uv.y), vec2(uTextureSize.x,uTextureSize.y), vec2(uCover.x ,uCover.y));
   vUv2 = resizeUvCover(vec2(uv.x,uv.y), vec2(uTextureSize2.x * (1. - uEnd),uTextureSize2.y), vec2(uCover.x ,uCover.y));

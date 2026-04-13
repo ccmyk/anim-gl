@@ -1,6 +1,5 @@
 import Page from '@/js/pagemain.js';
 
-//COMPS
 import Intro from './0Intro/index.js';
 
 class Home extends Page {
@@ -28,9 +27,7 @@ class Home extends Page {
         </main>
       `;
 
-      document
-        .querySelector('#content')
-        .insertAdjacentHTML('afterbegin', data.csskfields?.main || fallbackHTML);
+      document.querySelector('#content').insertAdjacentHTML('afterbegin', data.csskfields?.main || fallbackHTML);
     }
     this.el = document.querySelector('#content main') || document.querySelector('main');
     if (!this.el) {

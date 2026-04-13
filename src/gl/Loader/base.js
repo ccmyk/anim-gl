@@ -36,11 +36,7 @@ class Base {
           this.active = 0;
         },
       })
-      //FIRST OPTION, MUY LARGA Y DEMASIADO DETALLE
 
-      //OPCIÓN MONTAÑA, NO LE GUSTA A EVA PERO BIEN DE TIMINGS
-
-      //MUY POQUITA MONTAÑA, MI OPCIÓN, SI LE QUITO EL MULTIX, SE NOTA UN PELÍN MÁS la montaña
       .fromTo(this.program.uniforms.uStart0, { value: 0 }, { value: 1, duration: 0.6, ease: 'power2.inOut' }, 0)
       .fromTo(this.program.uniforms.uStartX, { value: 0 }, { value: -0.1, duration: 2, ease: 'power2.inOut' }, 0)
       .fromTo(this.program.uniforms.uMultiX, { value: -0.4 }, { value: 0.1, duration: 2, ease: 'power2.inOut' }, 0)

@@ -1,8 +1,5 @@
-//* Funciones de control
 export function stopScroll() {}
 export function startScroll() {}
-
-//* Función para Smooth
 
 export function animIosScroll() {
   if (this.isVisible == 0) {

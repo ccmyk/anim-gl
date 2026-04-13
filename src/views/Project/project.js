@@ -1,6 +1,5 @@
 import Page from '@/js/pagemain.js';
 
-//COMPS
 import Intro from './0Intro/index.js';
 import In from './0Intro/ioin.js';
 import Nxt from './0Intro/io.js';
@@ -16,7 +15,6 @@ class Home extends Page {
     if (hasTempContent) {
       document.querySelector('#content').insertAdjacentHTML('afterbegin', temp);
     } else {
-      // Load page data when navigating without inline HTML snapshot
       const data = await this.loadAppData({
         id: content.dataset.id,
         template: content.dataset.template,

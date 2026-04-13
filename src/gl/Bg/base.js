@@ -52,13 +52,9 @@ class Base {
         },
         onComplete: () => {},
       })
-      //FIRST OPTION, MUY LARGA Y DEMASIADO DETALLE
-
-      //OPCIÓN MONTAÑA, NO LE GUSTA A EVA PERO BIEN DE TIMINGS
 
       .fromTo('.home_about .cnt_tp', { opacity: 1 }, { opacity: 0, duration: 0.15 }, 0.9)
 
-      //MUY POQUITA MONTAÑA, MI OPCIÓN, SI LE QUITO EL MULTIX, SE NOTA UN PELÍN MÁS la montaña
       .fromTo(this.program.uniforms.uStart0, { value: 0 }, { value: 1, duration: 0.6, ease: 'power2.inOut' }, 0)
       .fromTo(this.program.uniforms.uStartX, { value: 0 }, { value: -0.1, duration: 2, ease: 'power2.inOut' }, 0)
       .fromTo(this.program.uniforms.uMultiX, { value: -0.4 }, { value: 0.1, duration: 2, ease: 'power2.inOut' }, 0)
@@ -71,7 +67,7 @@ class Base {
         '.nav',
         { '--dark': '#F8F6F2', '--gray': '#8A8A8A', '--light': '#000' },
         { '--dark': '#000', '--gray': '#8A8A8A', '--light': '#F8F6F2', duration: 0.5 },
-        0.1
+        0.1,
       );
     this.animstart.progress(1);
   }
@@ -101,7 +97,6 @@ class Base {
     this.viewport = [viewport.w, viewport.h];
     this.screen = [screen.w, screen.h];
 
-    // Get both the element and the Mbg element
     let bound = this.el.getBoundingClientRect();
     const mbgElement = document.querySelector('.Mbg');
     const mbgBounds = mbgElement ? mbgElement.getBoundingClientRect() : bound;
@@ -113,7 +108,6 @@ class Base {
     this.ctr.limit = parseInt(bound.height + calc);
 
     if (this.renderer) {
-      // Match canvas size to the Mbg element's dimensions
       if (mbgElement) {
         const dpr = Math.min(Math.max(window.devicePixelRatio, 1.5), 2);
         this.renderer.setSize(mbgBounds.width, mbgBounds.height);

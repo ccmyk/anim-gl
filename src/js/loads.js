@@ -3,7 +3,6 @@ export function timeout(ms) {
 }
 
 export async function loadAppData(config = {}, legacyId, legacyTemplate) {
-  // Allow calls that still use the legacy signature loadAppData('', id, template)
   if (config == null || typeof config !== 'object' || Array.isArray(config)) {
     config = {};
   }
@@ -24,7 +23,6 @@ export async function loadAppData(config = {}, legacyId, legacyTemplate) {
     webgl = this.main?.webgl ?? 1,
   } = config;
 
-  // Fetch the page-specific content
   try {
     if (!id) {
       throw new Error('Missing page id for loadAppData()');
@@ -50,7 +48,7 @@ export async function loadAppData(config = {}, legacyId, legacyTemplate) {
     }
     pageData = await response.json();
     if (pageData?.csskfields) {
-      const sharedTextures = (this.main?.sharedTextures) || {};
+      const sharedTextures = this.main?.sharedTextures || {};
       const refs = Array.isArray(pageData.csskfields.textureRefs) ? pageData.csskfields.textureRefs : [];
       const pageTextures = { ...(pageData.csskfields.textures || {}) };
       for (const ref of refs) {
@@ -64,8 +62,6 @@ export async function loadAppData(config = {}, legacyId, legacyTemplate) {
       };
     }
 
-    // Return the page data matching the structure the original WordPress version returned
-    // The original returned: { csskfields: { main: "...", textures: {...} }, ... }
     return {
       ...pageData,
       device,
@@ -75,7 +71,6 @@ export async function loadAppData(config = {}, legacyId, legacyTemplate) {
     };
   } catch (error) {
     console.error('Error loading page data:', error);
-    // Return minimal data to prevent complete failure
     return {
       device,
       webp,
@@ -143,7 +138,6 @@ export async function loadImage(elem, nowait = null) {
     }
     let img = new Image();
     let url = '';
-    // Prefer data-src but allow data-oi as a fallback used by GL markup
     if (elem.dataset.src) {
       url = elem.dataset.src;
     } else if (elem.dataset.oi) {

@@ -70,6 +70,5 @@ void main() {
     gl_FragColor = vec4(1.,0.,0.,0.);
 
     }
-    // gl_FragColor = vec4(vUv.x,1. - vUv.x,vUv.x * .5,1.0);
 
 }

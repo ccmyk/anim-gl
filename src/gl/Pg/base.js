@@ -17,22 +17,14 @@ class Base {
     this.touch = obj.touch;
     this.device = obj.device;
     this.canvas = obj.canvas;
-
     this.geo = obj.geometry;
-
     this.rev = obj.rev;
-
     this.active = -1;
     this.isready = 0;
-
     this.onanim = -1;
-
     this.els = this.el.parentNode.querySelectorAll('.el');
-
     this.sizer = this.el.parentNode.querySelector('.Sizer');
-
     this.animctr = gsap.timeline({ paused: true });
-
     this.meshes = [];
     this.mmap = new Set();
 
@@ -63,12 +55,11 @@ class Base {
       });
 
       mesh = new Mesh(this.renderer.gl, { geometry: this.geo, program: program });
-
       mesh.setParent(this.scene);
 
       const qck = gsap.utils.pipe(
         gsap.utils.clamp(-2, 2),
-        gsap.quickTo(mesh.program.uniforms.uMouse, 'value', { duration: 0.8, ease: 'power1' })
+        gsap.quickTo(mesh.program.uniforms.uMouse, 'value', { duration: 0.8, ease: 'power1' }),
       );
       this.meshes.push({
         mesh,
@@ -215,7 +206,7 @@ class Base {
           .to(
             this.meshes[this.onsel].el,
             { '--scx': 1, '--scy': 1, xPercent: 0, duration: 0.9, ease: 'power2.inOut' },
-            0
+            0,
           );
 
         animsel;
@@ -285,13 +276,13 @@ class Base {
               .to(
                 this.meshes[this.onsel].mesh.program.uniforms.uZoom,
                 { value: 1, duration: 0.9, ease: 'power2.inOut' },
-                0
+                0,
               )
               .to(this.meshes[this.onsel], { multx: 1, multy: 1, duration: 0.9, ease: 'power2.inOut' }, 0)
               .to(
                 this.meshes[this.onsel].el,
                 { '--scx': 1, '--scy': 1, xPercent: 0, duration: 0.9, ease: 'power2.inOut' },
-                0
+                0,
               );
 
             wait = 0.45;
@@ -301,13 +292,13 @@ class Base {
               .to(
                 this.meshes[this.onsel].mesh.program.uniforms.uZoom,
                 { value: 1, duration: 0.9, ease: 'power2.inOut' },
-                0
+                0,
               )
               .to(this.meshes[this.onsel], { multx: 1, multy: 1, duration: 0.9, ease: 'power2.inOut' }, 0)
               .to(
                 this.meshes[this.onsel].el,
                 { '--scx': 1, '--scy': 1, xPercent: 0, duration: 0.9, ease: 'power2.inOut' },
-                0
+                0,
               );
           }
           if (this.device > 1) {
@@ -370,7 +361,7 @@ class Base {
                   duration: 1.2,
                   ease: 'power2.inOut',
                 },
-                wait * multi
+                wait * multi,
               )
               .to(
                 this.meshes[i].el,
@@ -381,7 +372,7 @@ class Base {
                   duration: 1.2,
                   ease: 'power2.inOut',
                 },
-                wait * multi
+                wait * multi,
               );
           } else {
             if (this.meshes[i].id == 0) {
@@ -394,7 +385,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -404,7 +395,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 );
 
               if (this.meshes[i + 1])
@@ -421,7 +412,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -432,7 +423,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 );
 
               if (this.meshes[i + 1])
@@ -447,7 +438,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -458,7 +449,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
 
                 .to(this.meshes[i - 1].el, { xPercent: -104, duration: 0.9, ease: 'power2.inOut' }, wait);
@@ -472,7 +463,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -483,7 +474,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
 
                 .to(this.meshes[i - 2].el, { xPercent: -52, duration: 0.9, ease: 'power2.inOut' }, wait)
@@ -498,7 +489,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -508,7 +499,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 );
 
               if (this.meshes[i + 1])
@@ -523,7 +514,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -534,7 +525,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 );
             } else if (this.meshes[i].id == 7 || this.meshes[i].id == 10) {
               anim
@@ -546,7 +537,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -556,7 +547,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 );
             } else if (this.meshes[i].id == 8) {
               anim
@@ -568,7 +559,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -579,7 +570,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 );
             } else if (this.meshes[i].id == 9) {
               anim
@@ -591,7 +582,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(
                   this.meshes[i].el,
@@ -602,7 +593,7 @@ class Base {
                     duration: 1.2,
                     ease: 'power2.inOut',
                   },
-                  wait * multi
+                  wait * multi,
                 )
                 .to(this.meshes[i - 1].el, { xPercent: -52, duration: 0.9, ease: 'power2.inOut' }, wait);
             }
@@ -632,8 +623,6 @@ class Base {
         }
 
         this.boundh[3] = e.touches ? e.touches[0].clientX : e.clientX;
-
-        //MAP SCREEN
 
         const norm = (this.boundh[3] - this.boundh[0]) / this.boundh[1];
 
@@ -665,7 +654,7 @@ class Base {
           .to(
             n,
             { opacity: 1, duration: times[0], immediateRender: false, ease: 'power4.inOut' },
-            h * times[1] + params[0]
+            h * times[1] + params[0],
           );
 
         for (let [z, f] of c.querySelectorAll('.f').entries()) {
@@ -681,7 +670,7 @@ class Base {
                 duration: times[2],
                 ease: 'power4.inOut',
               },
-              params[0] + (h * times[3] + (1 + z) * times[4])
+              params[0] + (h * times[3] + (1 + z) * times[4]),
             )
             .set(f, { display: 'none' }, '>');
         }
@@ -729,7 +718,7 @@ class Base {
         duration: 0.6,
         ease: 'power2.inOut',
       },
-      0.4
+      0.4,
     );
   }
   onResize(viewport, screen) {

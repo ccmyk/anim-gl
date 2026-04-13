@@ -20,7 +20,6 @@ in vec2 vUv1;
 in vec2 vUv2;
 
 void main() {
-  // float timer = sin(uTime * .0005);
   float timer = uStart;
 
   float mouse = 0.;
@@ -66,7 +65,6 @@ void main() {
   centposi *=2.;
   centposi = abs(centposi);
   
-  
   float centi = (1. - vUv2.x);
 
   centi += -.5  + (mouse * .4 );
@@ -76,8 +74,6 @@ void main() {
   
   float imod = floor((centi)*Q.x)/Q.x;
 
-  
-
   I.x -= imod;
   I.x += (mouse * (imod * .2));
   I.x += (centpos*1.2) * (mouse * (imod * .1));
@@ -86,27 +82,15 @@ void main() {
   float r = texture2D(tMap, vec2(U.x,U.y)).r;
   float g = texture2D(tMap, vec2(U.x,U.y)).g;
   float b = texture2D(tMap, vec2(U.x,U.y)).b;
-  
 
   vec4 tex1 = vec4(r,g,b,1.);
 
   r = texture2D(tMap2, vec2(I.x,I.y)).r;
   g = texture2D(tMap2, vec2(I.x,I.y)).g;
   b = texture2D(tMap2, vec2(I.x,I.y)).b;
-  
 
   vec4 tex2 = vec4(r,g,b,1.);
-
-  
-  // gl_FragColor.r = step(abs(uStart), fract(cols * vUv.x * -1.));
-  
-  
-  // float change = 1. - step(uChange, fract(cols * ((uChange * .2) - vUv.x)));
   float change = 1. - step(uChange, fract(-1. * ( vUv.x )));
 
   gl_FragColor = mix(tex1,tex2,change);
 }
-
-//blury https://www.shadertoy.com/view/Xltfzj
-//blur sin mierdas https://www.shadertoy.com/view/Mtl3Rj
-//https://lygia.xyz/filter/gaussianBlur/2D

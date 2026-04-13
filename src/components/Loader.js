@@ -38,7 +38,7 @@ class Loader {
             this.calcNum(num);
           },
         },
-        0
+        0,
       )
       .to(
         this.obj,
@@ -51,7 +51,7 @@ class Loader {
             this.calcNum(num);
           },
         },
-        2.2
+        2.2,
       );
 
     let aw = this.DOM.el.querySelectorAll('.Awrite');

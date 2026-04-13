@@ -1,6 +1,5 @@
 import Page from '@/js/pagemain.js';
 
-//COMPS
 import Intro from './0Intro/index.js';
 
 class Home extends Page {
@@ -14,15 +13,12 @@ class Home extends Page {
     if (hasTempContent) {
       document.querySelector('#content').insertAdjacentHTML('afterbegin', temp);
     } else {
-      // Load page data when navigating (temp is null or undefined)
-      // Reference uses: loadRestApi(url, id, template); we now map to static JSON lookup
       const data = await this.loadAppData({
         id: content.dataset.id,
         template: content.dataset.template,
       });
       document.querySelector('#content').insertAdjacentHTML('afterbegin', data.csskfields.main);
     }
-    // Use the freshly injected content when navigating without inline HTML
     this.el = document.querySelector('#content main') || document.querySelector('main');
     if (!this.el) {
       console.error('[Projects] Missing <main> element in loaded content');
@@ -61,9 +57,6 @@ class Home extends Page {
 
     this.components.list.onclick = () => {
       this.components.accordion.classList.remove('act');
-
-      //Esto mejor al final, que le dé drama y te dé la sensación de
-      //que se está cargando
 
       this.main.events.anim.detail.state = 1;
       this.main.events.anim.detail.style = 1;

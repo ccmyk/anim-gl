@@ -3354,7 +3354,7 @@ body {
   position: absolute;
   left: 0;
   width: 1px;
-  background: yellow;
+  background: transparent;
 }
 :root.D .home_about .Oi-bg {
   height: 50vh;

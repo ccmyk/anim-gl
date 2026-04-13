@@ -3,18 +3,7 @@ import { check, start, stop, updateX, updateY, updateScale } from './position.js
 import { Vec2, Renderer, Mesh, Transform, Camera } from 'ogl';
 
 class Title {
-  /**
-   * @param {Object} obj
-   * @param {HTMLElement} obj.el
-   * @param {Object} obj.pos
-   * @param {import('ogl').Renderer} obj.renderer
-   * @param {import('ogl').Mesh} obj.mesh
-   * @param {string} obj.text
-   * @param {HTMLCanvasElement} obj.canvas
-   * @param {number} obj.touch
-   * @param {import('ogl').Transform} obj.scene
-   * @param {import('ogl').Camera} obj.cam
-   */
+
   constructor(obj) {
     this.el = obj.el;
     this.cnt = obj.el.parentNode ? obj.el.parentNode.querySelector('.cCover') : null;
@@ -41,11 +30,8 @@ class Title {
     this.lerp = 0.6;
     this.actualChar = -2;
 
-    /** @type {number[]} */
     this.power = [];
-    /** @type {number[]} */
     this.positioncur = [];
-    /** @type {number[]} */
     this.positiontar = [];
 
     this.actualChar = -2;
@@ -54,21 +40,14 @@ class Title {
     this.stopt = 0;
     this.animstart = 0;
 
-    /** @type {HTMLElement | null} */
     this.tt = null;
-    /** @type {NodeListOf<Element> | null} */
     this.chars = null;
-    /** @type {gsap.core.Timeline | null} */
     this.animin = null;
-    /** @type {gsap.core.Timeline | null} */
     this.animout = null;
 
     this.initEvents();
   }
 
-  /**
-   * @param {number} time
-   */
   update(time) {
     if (!this.renderer || this.active == 2) {
       return;
@@ -129,7 +108,6 @@ class Title {
       );
   }
   initEvents() {
-    //ANIM MOUSE IN
     this.animin = gsap
       .timeline({ paused: true })
       .to(
@@ -138,7 +116,6 @@ class Title {
         0
       );
 
-    //ANIMOUT
     this.animout = gsap.timeline({ paused: true }).to(
       this.mesh.program.uniforms.uPower,
       {
@@ -162,7 +139,6 @@ class Title {
       return;
     }
 
-    /** @param {MouseEvent | TouchEvent} e */
     this.inFn = (e) => {
       this.stopt = 0;
       this.lerp = 0.03;
@@ -185,7 +161,6 @@ class Title {
       this.lerp = 0.06;
     };
 
-    /** @param {MouseEvent | TouchEvent} e */
     this.mvFn = (e) => {
       let lX = 0;
       if ('touches' in e) {
@@ -196,7 +171,6 @@ class Title {
       this.calcChars(lX);
     };
 
-    /** @param {MouseEvent | TouchEvent} e */
     this.lvFn = (e) => {
       let lX = 0;
       if ('touches' in e) {
@@ -230,10 +204,6 @@ class Title {
       }
     }
 
-    /**
-     * @param {any} _e
-     * @param {number} i
-     */
     this.charFn = (_e, i) => {
       this.mesh.program.uniforms.uKey.value = i;
       this.actualChar = i;
@@ -280,10 +250,6 @@ class Title {
     this.mesh.program.uniforms.uHeight.value = arrh;
   }
 
-  /**
-   * @param {number} x
-   * @param {number} [out]
-   */
   calcChars(x, out) {
     this.lastx = x;
     const arr = [];
@@ -332,16 +298,9 @@ class Title {
     this.getChars();
   }
 
-  /**
-   * @param {any} value1
-   * @param {any} value2
-   * @param {number} t
-   * @param {any} [out]
-   */
   lerpArr(value1, value2, t, out) {
     if (typeof value1 == 'number' && typeof value2 == 'number') return lerp(value1, value2, t);
     else {
-      //assume array
       const len = Math.min(value1.length, value2.length);
       out = out || new Array(len);
       for (let i = 0; i < len; i++) out[i] = lerp(value1[i], value2[i], t);

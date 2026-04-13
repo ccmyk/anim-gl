@@ -30,7 +30,6 @@ export default class {
     for (let [i, a] of spty.lines.entries()) {
       this.anim.fromTo(a, { y: 1.2 + 'rem', opacity: 0 }, { y: 0 + 'rem', opacity: 1, duration: 0.3 }, i * 0.2);
     }
-    // this.anim.paused()
     this.onResize();
   }
 
@@ -77,7 +76,6 @@ export default class {
       return false;
     }
     this.ctr.current = y - this.ctr.start + this.h;
-    // this.ctr.current = window.clamp(0, this.ctr.limit, this.ctr.current)
     this.ctr.progt = this.ctr.current / this.ctr.limit;
     this.ctr.prog = window.lerp(this.ctr.prog, this.ctr.progt, 0.01);
 

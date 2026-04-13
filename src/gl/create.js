@@ -1,7 +1,5 @@
 import { Camera, Plane, Triangle, Mesh, Geometry, Texture, Text, RenderTarget, Transform, Program, Vec2 } from 'ogl';
 
-// import imurl from './e.jpeg?url'
-
 export async function create(texs = []) {
   await this.createAssets(texs);
 

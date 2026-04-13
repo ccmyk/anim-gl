@@ -1,7 +1,3 @@
-/**
- * @param {IntersectionObserverEntry} entry
- * @this {import('./base.js').default}
- */
 export function check(entry) {
   const vis = entry.isIntersecting;
 
@@ -13,9 +9,6 @@ export function check(entry) {
   return vis;
 }
 
-/**
- * @this {import('./base.js').default}
- */
 export function start() {
   if (this.active == 1) {
     return;
@@ -67,9 +60,6 @@ export function start() {
   this.active = 1;
 }
 
-/**
- * @this {import('./base.js').default}
- */
 export function stop() {
   if (this.animstart) {
     if (this.animstart.progress() != 1) {
@@ -82,13 +72,7 @@ export function stop() {
 
   this.active = 0;
 }
-/**
- * @param {number} x
- */
-export function updateX(x = 0) {}
-/**
- * @param {number} y
- */
-export function updateY(y = 0) {}
 
+export function updateX(x = 0) {}
+export function updateY(y = 0) {}
 export function updateScale() {}

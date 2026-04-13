@@ -1,6 +1,4 @@
-// Libraries loaded via ES modules and exposed globally
 import Lenis from 'lenis';
-//Basic
 import Nav from '@/components/Nav.js';
 import Loader from '@/components/Loader.js';
 
@@ -8,7 +6,6 @@ import gl from '../gl/gl.js'; // Re-enabled for proper WebGL operation
 
 import { IS_DEV } from '@/utils/env.js';
 
-//Mouse
 import Mouse from '@/components/Mouse.js';
 
 import { createViews } from './view.js';
@@ -28,7 +25,6 @@ class App {
       hasTextures: info[1] && !!info[1].textures,
     });
 
-    // Bind methods manually instead of using auto-bind
     this.onPopState = this.onPopState.bind(this);
     this.onRequest = this.onRequest.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -78,7 +74,6 @@ class App {
     this.resizevar = '';
     this.url = window.location.pathname;
 
-    // Make sure texs exists
     if (info[1] && !info[1].texs && info[1].textures) {
       console.log('[App] Adding texs from textures for backward compatibility');
       info[1].texs = info[1].textures;
@@ -86,16 +81,14 @@ class App {
 
     console.log(
       '[App] Initializing with texs:',
-      info[1].texs ? Object.keys(info[1].texs).length + ' textures' : 'undefined'
+      info[1].texs ? Object.keys(info[1].texs).length + ' textures' : 'undefined',
     );
     this.initApp(info[1], info[1].texs);
   }
 
   async initApp(temps, texs) {
-    //Events
     this.addEvents();
 
-    //Lenis
     this.lenis = new Lenis({
       wheelEventsTarget: document.documentElement,
       lerp: 0.04,
@@ -112,7 +105,6 @@ class App {
     }
 
     this.createScrollCheck();
-    //Loader
     const hasLoaderTemplate = typeof temps.loader === 'string' && temps.loader.trim().length > 0;
     const shouldRunLoader = hasLoaderTemplate && !this.main.hasSeenLoader;
     this.shouldRunLoader = shouldRunLoader;
@@ -140,44 +132,35 @@ class App {
       firsttemp = temps.main;
     }
 
-    //PHIDE
     this.pHide = document.createElement('div');
     this.pHide.className = 'pHide';
     document.querySelector('body').appendChild(this.pHide);
 
-    //Pages
     this.createViews();
     if (this.template.includes('lcl')) {
       this.template = this.template.substring(0, this.template.length - 3);
     }
 
-    //Page
     this.page = this.pages.get(this.template);
     await this.page.create(this.content, this.main, firsttemp);
 
-    // Ensure global background container (.Mbg) exists if provided by options
     try {
       const hasMbg = document.querySelector('.Mbg');
       if (!hasMbg && typeof temps.mbg === 'string' && temps.mbg.trim().length > 0) {
-        // Insert before main content so GL can attach its canvas after it
         document.body.insertAdjacentHTML('afterbegin', temps.mbg);
       }
     } catch (err) {
       console.warn('[App] Failed to insert global Mbg container:', err);
     }
 
-    //Nav
     this.nav = new Nav(this.main);
     this.nav.create(temps.nav);
-
-    //Lets play
 
     this.update();
 
     await this.timeout(260);
 
     let funcgl = '';
-    //GL
     if (this.main.webgl == 1) {
       this.gl = new gl(this.main);
       funcgl = this.gl.create(texs);
@@ -197,7 +180,6 @@ class App {
   }
 
   async firstView() {
-    //Mouse
     if (this.mouse) {
       this.mouse.create();
       this.mouse.start();
@@ -230,7 +212,6 @@ class App {
       }
     }
 
-    //State es para diferenciar entre el firstView y un PopState
     this.page.show();
     let state = await this.page.start(0);
 
@@ -371,14 +352,11 @@ class App {
     return Math.floor(Math.random() * max);
   }
 }
-//Start
 App.prototype.createViews = createViews;
 
-//Events
 App.prototype.addEvents = addEvents;
 App.prototype.onResize = onResize;
 
-//Pop
 App.prototype.onPopState = onPopState;
 App.prototype.onChange = onChange;
 App.prototype.onRequest = onRequest;
@@ -386,11 +364,7 @@ App.prototype.newView = newView;
 
 App.prototype.resetLinks = resetLinks;
 
-//Anims
-
 App.prototype.writeFn = writeFn;
 App.prototype.writeCt = writeCt;
-
-//Rest
 
 export default App;

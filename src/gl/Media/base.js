@@ -3,9 +3,7 @@ import { check, start, stop, updateX, updateY, updateScale, updateAnim } from '.
 import { Vec2 } from 'ogl';
 
 class Base {
-  /**
-   * @param {{ el: HTMLElement; pos: any; mesh: any; texture: any; renderer: any; touch: any; canvas: any; }} obj
-   */
+
   constructor(obj) {
     this.el = obj.el;
     this.pos = obj.pos;
@@ -57,7 +55,7 @@ class Base {
           this.el.classList.add('act');
         },
       },
-      0
+      0,
     );
   }
 
@@ -102,8 +100,6 @@ class Base {
       this.ease = 0.03;
       this.coords[0] = e.touches ? e.touches[0].clientX : e.clientX;
 
-      //MAP SCREEN
-
       this.norm[0] = (this.coords[0] - this.bound[0]) / this.bound[2];
 
       this.norm[0] -= 0.5;
@@ -119,7 +115,6 @@ class Base {
       this.el.onmouseleave = (e) => this.lvFn(e);
     } else {
       this.ctr.lerp = 0.1;
-      this.el.style.touchAction = 'none';
       this.el.ontouchmove = (e) => this.mvFn(e);
       this.el.ontouchend = (e) => this.lvFn(e);
     }
@@ -152,7 +147,7 @@ class Base {
           duration: 0.6,
           ease: 'power2.inOut',
         },
-        0.4
+        0.4,
       );
   }
   onResize(viewport, screen) {

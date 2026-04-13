@@ -38,7 +38,6 @@ function browserCheck() {
 
   console.log(devnum);
 
-  //WebP
   const element = document.createElement('canvas');
   let isWebPCheck = false;
   let isWebgl = false;
@@ -83,9 +82,7 @@ function browserCheck() {
   if (isTouch != true) {
     video
       .play()
-      .then(() => {
-        // autoplay supported
-      })
+      .then(() => {})
       .catch((err) => {
         console.warn('[browserCheck] Autoplay detection video play interrupted:', err.name || err);
       });

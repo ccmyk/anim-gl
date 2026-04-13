@@ -1,5 +1,3 @@
-
-// src/types/global.d.ts
 declare global {
   interface Window {
     gsap: typeof import('gsap').gsap;
@@ -11,5 +9,4 @@ declare global {
   }
 }
 
-// This is needed to make the file a module.
 export {};

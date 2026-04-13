@@ -2,6 +2,11 @@
 /index              /index/                     301
 /about/*            /about/index.html           200!
 /about              /about/                     301
-/project/*          /project/:splat/index.html  200!
+/error/*            /error/index.html           200!
+/error              /error/                     301
+/project/*/         /project/:splat/index.html  200
+/project/*          /project/:splat/index.html  200
+/project            /error/index.html           404
 
-
+# 404 fallback
+/*                  /error/index.html           404

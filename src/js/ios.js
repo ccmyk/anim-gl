@@ -94,7 +94,6 @@ export function callIos() {
   if (this.ios) {
     this.ios.forEach((el) => {
       if (el.class) {
-        //el noob es por si no quieres que lo observe
         if (el.class.noob == 1) {
           return false;
         }

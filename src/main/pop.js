@@ -141,7 +141,6 @@ export async function onRequest({ push, response, url }) {
   this.newpage.id = this.content.dataset.id;
 
   this.newpage.ispop = 1;
-  // Pass the HTML content from the fetched page as the third parameter
   await this.newpage.create(this.content, this.main, this.content.innerHTML);
   if (this.gl) {
     await this.gl.createTemp(this.template);
@@ -186,15 +185,13 @@ export function resetLinks() {
     const isAnchor = link.href.indexOf('#') > -1;
 
     if (link.dataset.type && !isAnchor) {
-      // because our static HTML files are at their original paths (e.g., /index/ not /projects/)
       if (IS_DEV) {
         isLocal = true;
-        // Don't rewrite href - keep the original path
       }
       link.removeAttribute('data-type');
     }
 
-        if ((isLocal || isAnchor) && !link.href.endsWith('.pdf')) {
+    if ((isLocal || isAnchor) && !link.href.endsWith('.pdf')) {
       link.onclick = async (event) => {
         event.preventDefault();
 
@@ -215,13 +212,12 @@ export function resetLinks() {
           }
         }
       };
-        } else if (link.href.endsWith('.pdf')) {
+    } else if (link.href.endsWith('.pdf')) {
       link.target = '_blank';
     } else if (link.href.indexOf('mailto') == -1 && link.href.indexOf('tel') == -1) {
       link.rel = 'noopener';
       link.target = '_blank';
     }
-    //CLEAN CLASS
     if (actual == link.href) {
       link.classList.add('actLink');
     } else {

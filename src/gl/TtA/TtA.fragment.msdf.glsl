@@ -24,7 +24,6 @@ void main() {
     float alpha = smoothstep(-d, d, signedDist);
 
     gl_FragColor.rgb = vec3(uColor);
-    // gl_FragColor.r += distance(uMouse.x + .5 ,vUvR.y * .5);
     
     gl_FragColor.a = alpha;
     

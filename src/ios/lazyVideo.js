@@ -96,7 +96,6 @@ export default class {
     let isPlaying = false;
 
     if (entry.isIntersecting == undefined) {
-      // this.DOM.video.pause()
       return false;
     } else if (entry.isIntersecting == true) {
       this.start();
@@ -111,7 +110,6 @@ export default class {
           this.DOM.video.setAttribute('autoplay', 'true');
         }
       } else {
-        // Validate video source before setting
         const videoSrc = this.DOM.video.dataset.lazy;
         if (videoSrc && typeof videoSrc == 'string' && videoSrc.trim() != '') {
           this.DOM.video.src = videoSrc;

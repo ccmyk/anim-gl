@@ -12,19 +12,6 @@
 /fonts/*
   Cache-Control: public, max-age=300
 
-# Private-share assets: discourage discovery/indexing and referrer leakage
-/archive/*
-  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
-  Referrer-Policy: no-referrer
-  X-Content-Type-Options: nosniff
-  Cache-Control: private, no-store, max-age=0
-
-/previews/*
-  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
-  Referrer-Policy: no-referrer
-  X-Content-Type-Options: nosniff
-  Cache-Control: private, no-store, max-age=0
-
 # Short cache for project pages (1 hour)
 /project/options-institute/*
   X-Robots-Tag: all

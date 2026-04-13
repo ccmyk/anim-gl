@@ -81,7 +81,7 @@ export function addEvents() {
       clearTimeout(this.res);
       this.res = setTimeout(this.onResize, 400);
     },
-    { passive: true }
+    { passive: true },
   );
 
   if (this.main.isTouch) {

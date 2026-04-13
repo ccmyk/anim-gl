@@ -4,14 +4,12 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
   }
 
   try {
-    // Fetch options.json (contains nav, loader, global textures)
     const optionsResponse = await fetch('/content/options.json');
     if (!optionsResponse.ok) {
       throw new Error(`Failed to load options.json: ${optionsResponse.status}`);
     }
     const optionsData = await optionsResponse.json();
 
-    // Fetch the initial page data (contains the main HTML content)
     let pageData = null;
     if (id) {
       try {
@@ -26,8 +24,6 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
       }
     }
 
-    // Merge the loaded data with config
-    // This matches the structure expected by the original WordPress version
     return {
       device,
       webp,
@@ -36,16 +32,12 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
       logged,
       webgl,
       visible,
-      // From options.json
       nav: optionsData.nav,
       loader: optionsData.loader,
       mbg: optionsData.mbg,
-      // The 'main' field contains the initial page HTML (if available from page data)
       main: pageData?.csskfields?.main || optionsData.main || '',
-      // Textures from options.json (home0, home1, about0, etc.)
       texs: optionsData.textures || {},
       textures: optionsData.textures || {},
-      // Fields for base URL and template
       fields: {
         base: optionsData.fields?.base || window.location.origin,
         template: template || optionsData.fields?.template || '',
@@ -53,7 +45,6 @@ async function loadAppData({ device = 0, webp = 0, id = '', template = '', logge
     };
   } catch (error) {
     console.error('Error loading app data:', error);
-    // Return minimal data to prevent complete failure
     return {
       device,
       webp,

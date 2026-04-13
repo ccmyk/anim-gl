@@ -21,7 +21,5 @@ void main() {
     vUv = uv.xyz;
 
     vec3 pos = position;
-    // pos.x *= 1.5;
-    // pos.y *= 1.5;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }

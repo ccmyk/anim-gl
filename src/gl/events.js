@@ -40,7 +40,6 @@ export async function loadImage(url) {
     let img = new Image();
     img.crossOrigin = 'anonymous';
 
-    // For MSDF font textures, we need special handling
     const isMSDFTexture = url.includes('PPNeueMontreal-Medium');
 
     img.onload = () => {
@@ -52,10 +51,8 @@ export async function loadImage(url) {
 
     img.onerror = (e) => {
       console.warn(`Failed to load image: ${url}`, e);
-      // For MSDF textures, this is critical - create a placeholder
       if (isMSDFTexture) {
         console.error('MSDF texture failed to load, creating fallback');
-        // Create a small placeholder texture for MSDF to prevent shader errors
         const canvas = document.createElement('canvas');
         canvas.width = 512;
         canvas.height = 512;
@@ -68,7 +65,6 @@ export async function loadImage(url) {
       }
     };
 
-    // Set the source after establishing event handlers
     img.src = url;
   });
 }
@@ -85,7 +81,6 @@ function cleanVid(elem) {
 
 export async function loadVideo(elem, url) {
   return new Promise((resolve, reject) => {
-    // Safety check for elem parameter
     if (!elem) {
       console.warn('loadVideo called with undefined element');
       resolve(null);
